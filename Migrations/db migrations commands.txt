@@ -1,0 +1,6 @@
+Run this commands in a developer power shell from the project directory
+
+
+Command for script migrations to slq script:
+--------------------------------------------
+dotnet ef migrations script --idempotent --context GatewaysDbContext --verbose --output ".\Migrations\sql\migrations.sql"
