@@ -1,5 +1,14 @@
 Run this commands in a developer power shell from the project directory
 
+Command for add a new migration:
+--------------------------------
+dotnet ef migrations add [Migration Name] --context GatewaysDbContext --verbose
+
+
+Command for update the database structure:
+------------------------------------------
+dotnet ef database update --context GatewaysDbContext --verbose
+
 
 Command for script migrations to slq script:
 --------------------------------------------
