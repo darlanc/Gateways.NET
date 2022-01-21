@@ -67,3 +67,46 @@ END;
 
 GO
 
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220121002938_Detachable_Peripherals')
+BEGIN
+    DECLARE @var0 sysname;
+    SELECT @var0 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Peripheral]') AND [c].[name] = N'GatewayId');
+    IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Peripheral] DROP CONSTRAINT [' + @var0 + '];');
+    ALTER TABLE [Peripheral] ALTER COLUMN [GatewayId] int NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220121002938_Detachable_Peripherals')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20220121002938_Detachable_Peripherals', N'3.1.22');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220121003538_SoftDelete')
+BEGIN
+    ALTER TABLE [Peripheral] ADD [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220121003538_SoftDelete')
+BEGIN
+    ALTER TABLE [Gateway] ADD [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220121003538_SoftDelete')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20220121003538_SoftDelete', N'3.1.22');
+END;
+
+GO
+

@@ -12,5 +12,10 @@ namespace Gateways.NET.Contracts
         /// Entity identifier.
         /// </summary>
         public TKey Id { get; set; }
+
+        /// <summary>
+        /// Indicates whether this entity has been deleted
+        /// </summary>
+        public bool IsDeleted { get; set; }
     }
 }

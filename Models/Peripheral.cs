@@ -33,7 +33,7 @@ namespace Gateways.NET.Models
         /// <summary>
         /// Related Gateway ID
         /// </summary>
-        public int GatewayId { get; set; }
+        public int? GatewayId { get; set; }
 
         #endregion
 

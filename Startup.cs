@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 
 namespace Gateways.NET
@@ -68,7 +67,13 @@ namespace Gateways.NET
 
             #region [ CORS ]
 
-            services.AddCors(); 
+            services.AddCors();
+
+            #endregion
+
+            #region [ Swagger ] 
+
+            services.AddSwaggerGen();       
 
             #endregion
         }
@@ -81,15 +86,17 @@ namespace Gateways.NET
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-            app.UseSwaggerUI(options =>
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
             {
-                options.DocExpansion(DocExpansion.None);
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "MusalaSoft Gateways.NET Example");
-                options.RoutePrefix = string.Empty;
-                options.DefaultModelRendering(ModelRendering.Example);
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gateways.NET v1.0");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseRouting();

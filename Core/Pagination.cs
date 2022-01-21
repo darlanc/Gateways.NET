@@ -1,12 +1,12 @@
 ﻿using Gateways.NET.Contracts;
 
 
-namespace Gateways.NET.DTOs
+namespace Gateways.NET.Core
 {
     /// <summary>
     /// Pagination View Model
     /// </summary>
-    public class PaginationViewModel : IPaginationModel
+    public class Pagination : IPaginationModel
     {
         /// <summary>
         /// Page
@@ -17,5 +17,10 @@ namespace Gateways.NET.DTOs
         /// Page Size
         /// </summary>
         public int PageSize { get; set; } = 20;
+
+        /// <summary>
+        /// Total number of pages of the current page size
+        /// </summary>
+        public int TotalPages { get; set; }
     }
 }
