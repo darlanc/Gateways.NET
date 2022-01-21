@@ -41,7 +41,7 @@ namespace Gateways.NET.Controllers
 		}
 
 		/// <summary>
-		/// Create an Api Response
+		/// Create an API Response
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="payload">Respose Data</param>
@@ -49,8 +49,7 @@ namespace Gateways.NET.Controllers
 		/// <param name="errors">Error List</param>
 		/// <param name="contentType">Reponse Content Type</param>
 		/// <param name="headers">Response Headers <see cref="HeaderDictionary"/></param>
-		/// <param name="paging">Pagination Info. <see cref="Paging"/></param>
-		/// <param name="meta"><see cref="Meta"/> info</param>
+		/// <param name="paging">Pagination Info. <see cref="Pagination"/></param>		
 		/// <returns><see cref="ApiResponse"/></returns>
 		protected ApiResponse<T> Respond<T>(
 			object payload = null,
@@ -67,6 +66,29 @@ namespace Gateways.NET.Controllers
 
 			if (errors != null)
 				res.Errors = errors;			
+
+			if (payload != null)
+				res.Payload = (T)payload;			
+
+			SetHeaders(headers, contentType, status);
+
+			return res;
+		}
+
+		protected PaginatedApiResponse<T> RespondPaginated<T>(object payload = null,
+			int status = StatusCodes.Status200OK,
+			IEnumerable<Error> errors = null,
+			string contentType = "application/json",
+			HeaderDictionary headers = null,
+			Pagination paging = null)
+        {
+			var res = new PaginatedApiResponse<T>
+			{
+				Status = status,
+			};
+
+			if (errors != null)
+				res.Errors = errors;
 
 			if (payload != null)
 				res.Payload = (T)payload;
@@ -107,14 +129,14 @@ namespace Gateways.NET.Controllers
 		}		
 
 		/// <summary>
-		/// Return a Generic Paginated Response.
+		/// Returns a Generic Paginated Response.
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="items"></param>
 		/// <returns></returns>
 		protected ApiResponse<IEnumerable<T>> PaginatedResponse<T>(PaginatedList<T> items)
 		{
-			return Respond<IEnumerable<T>>(				
+			return RespondPaginated<IEnumerable<T>>(				
 				payload: items,
 				paging: items.Paging);
 		}

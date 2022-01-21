@@ -17,22 +17,30 @@ namespace Gateways.NET.Contracts
         /// <summary>
         /// Errors
         /// </summary>
-        public IEnumerable<Error> Errors { get; set; }
-        /// <summary>
-        /// Paging
-        /// </summary>
-        public Pagination Paging { get; set; }
+        public IEnumerable<Error> Errors { get; set; }        
     }
 
     /// <summary>
-    /// Generic Type
+    /// Generic payload API response
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Generic payload type</typeparam>
     public class ApiResponse<T> : ApiResponse
     {
         /// <summary>
         /// Payload
         /// </summary>
         public T Payload { get; set; }
+    }
+
+    /// <summary>
+    /// Generic paginated payload API response
+    /// </summary>
+    /// <typeparam name="T">Generic payload type</typeparam>
+    public class PaginatedApiResponse<T> : ApiResponse<T>
+    {
+        /// <summary>
+        /// Paging information
+        /// </summary>
+        public Pagination Paging { get; set; }
     }
 }

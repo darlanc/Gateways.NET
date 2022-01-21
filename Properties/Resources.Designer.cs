@@ -59,5 +59,14 @@ namespace Gateways.NET.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong please try again in a few minutes. If the problem persists contact technical support.
+        /// </summary>
+        internal static string Error_General {
+            get {
+                return ResourceManager.GetString("Error_General", resourceCulture);
+            }
+        }
     }
 }
