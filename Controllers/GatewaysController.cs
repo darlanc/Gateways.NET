@@ -79,7 +79,7 @@ namespace Gateways.NET.Controllers
             {
                 if (_logger != null)
                     _logger.LogError(ex, ex.Message);
-                return Error<FullGatewayViewModel>(Resources.Error_General, StatusCodes.Status500InternalServerError);
+                return Error(Resources.Error_General, StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -112,6 +112,37 @@ namespace Gateways.NET.Controllers
                     _logger.LogError(ex, ex.Message);
                 return Error<FullGatewayViewModel>(Resources.Error_General, StatusCodes.Status500InternalServerError);
             }
-        }        
+        }
+
+        /// <summary>
+        /// Add a new Peripheral device and attaches it to the Gateway
+        /// </summary>
+        /// <param name="model">Gateway model</param>
+        /// <returns></returns>
+        [HttpPost("{id}/peripherals")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ApiResponse<FullPeripheralViewModel>> AddPeripheral([FromBody]PeripheralViewModel model, int id)
+        {
+            try
+            {
+                var command = _mapper.Map<AddPeripheralToGatewayCommand>(model);
+                command.GatewayId = id;
+                var commandResponse = await _dispatcher.DispatchAsync(command);
+                if (commandResponse.Errors?.Any() == true)
+                    return Error<FullPeripheralViewModel>(commandResponse.Errors, (int)commandResponse.Code);
+
+                var result = (commandResponse as CommandResponse<FullGatewayViewModel>).Body;
+
+                return Respond<FullPeripheralViewModel>(payload: result, status: StatusCodes.Status201Created);
+            }
+            catch (Exception ex)
+            {
+                if (_logger != null)
+                    _logger.LogError(ex, ex.Message);
+                return Error<FullPeripheralViewModel>(Resources.Error_General, StatusCodes.Status500InternalServerError);
+            }
+        }
     }
 }

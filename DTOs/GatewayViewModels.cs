@@ -24,7 +24,7 @@ namespace Gateways.NET.DTOs
     }
 
     /// <summary>
-    /// Full view model of a Gateway, including it's ID
+    /// Full view model of a Gateway, including it's ID and the list of attached Peripheral devices
     /// </summary>
     public class FullGatewayViewModel : GatewayViewModel
     {
@@ -32,5 +32,10 @@ namespace Gateways.NET.DTOs
         /// ID of the Gateway
         /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// List of attached Peripheral devices
+        /// </summary>
+        public PeripheralViewModel[] Peripherals { get; set; }
     }
 }

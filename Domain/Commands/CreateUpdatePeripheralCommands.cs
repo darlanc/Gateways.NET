@@ -3,6 +3,9 @@ using System;
 
 namespace Gateways.NET.Domain.Commands
 {
+    /// <summary>
+    /// Base class for create/update Peripheral devices
+    /// </summary>
     public class PeripheralCommandBase : ICommand
     {
         /// <summary>
@@ -27,7 +30,7 @@ namespace Gateways.NET.Domain.Commands
     }
 
     /// <summary>
-    /// Command for create a Peripheral
+    /// Command for create a Peripheral device
     /// </summary>
     public class CreatePeripheralCommand : PeripheralCommandBase
     {
@@ -35,10 +38,18 @@ namespace Gateways.NET.Domain.Commands
     }
 
     /// <summary>
-    /// Command for update a Gateway
+    /// Command for update a Peripheral device
     /// </summary>
     public class UpdatePeripheralCommand : PeripheralCommandBase
     {
         public int Id { get; set; }
+    }
+
+    /// <summary>
+    /// Command for create a Peripheral device directly attached to a Gateway
+    /// </summary>
+    public class AddPeripheralToGatewayCommand : CreatePeripheralCommand
+    {
+        public int GatewayId { get; set; }
     }
 }
