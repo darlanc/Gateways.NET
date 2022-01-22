@@ -2,6 +2,9 @@
 
 namespace Gateways.NET.DTOs
 {
+    /// <summary>
+    /// View model of a Peripheral device
+    /// </summary>
     public class PeripheralViewModel
     {
         /// <summary>
@@ -23,5 +26,22 @@ namespace Gateways.NET.DTOs
         /// Status (Online = true / Offline = false)
         /// </summary>
         public bool Status { get; set; }
+    }
+
+
+    /// <summary>
+    /// Full view model of a Peripheral device, including it's ID and the ID of the associated Gateway (if there is one)
+    /// </summary>
+    public class FullPeripheralViewModel : PeripheralViewModel
+    {
+        /// <summary>
+        /// ID of the Peripheral device
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// ID of the associated Gateway (if there is one)
+        /// </summary>
+        public int? GatewayId { get; set; }
     }
 }
