@@ -4,7 +4,7 @@
 namespace Gateways.NET.Core
 {
     /// <summary>
-    /// Pagination View Model
+    /// Pagination Model
     /// </summary>
     public class Pagination : IPaginationModel
     {
@@ -16,8 +16,11 @@ namespace Gateways.NET.Core
         /// <summary>
         /// Page Size
         /// </summary>
-        public int PageSize { get; set; } = 20;
+        public int PageSize { get; set; } = 20;        
+    }
 
+    public class PaginationViewModel : Pagination
+    {
         /// <summary>
         /// Total number of pages of the current page size
         /// </summary>
