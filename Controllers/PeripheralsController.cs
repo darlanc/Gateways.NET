@@ -119,18 +119,18 @@ namespace Gateways.NET.Controllers
         /// </summary>
         /// <param name="model">Peripheral device model</param>
         /// <returns></returns>
-        [HttpPatch("{id}/{gatewayId}")]
+        [HttpPatch("{id}/attach")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ApiResponse> AttachPeripheral(int id, int gatewayId)
+        public async Task<ApiResponse> AttachPeripheral([FromBody]AttachPeripheralViewModel model, int id)
         {
             try
             {
                 var command = new AttachPeripheralCommand
                 {
                     PeripheralId = id,
-                    GatewayId = gatewayId
+                    GatewayId = model.GatewayId
                 };
 
                 var commandResponse = await _dispatcher.DispatchAsync(command);
@@ -184,18 +184,18 @@ namespace Gateways.NET.Controllers
         /// </summary>
         /// <param name="model">Peripheral device model</param>
         /// <returns></returns>
-        [HttpPatch("{id}/{status}")]
+        [HttpPatch("{id}/status")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ApiResponse> UpdatePeripheralStatus(int id, bool status)
+        public async Task<ApiResponse> UpdatePeripheralStatus([FromBody]PeripheralStatusViewModel model, int id)
         {
             try
             {
                 var command = new SetPeripheralStatusCommand
                 {
                     PeripheralId = id,
-                    Status = status
+                    Status = model.Status
                 };
                 
                 var commandResponse = await _dispatcher.DispatchAsync(command);
