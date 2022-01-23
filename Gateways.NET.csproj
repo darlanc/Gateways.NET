@@ -36,7 +36,6 @@
   <ItemGroup>
     <Folder Include="Domain\Handlers\" />
     <Folder Include="Domain\QueryServices\" />
-    <Folder Include="Domain\Validators\" />
     <Folder Include="MappingProfiles\" />
     <Folder Include="Repository\" />
   </ItemGroup>

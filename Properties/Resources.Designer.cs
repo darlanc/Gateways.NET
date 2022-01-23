@@ -68,5 +68,32 @@ namespace Gateways.NET.Properties {
                 return ResourceManager.GetString("Error_General", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Serial Number already exists in the database.
+        /// </summary>
+        internal static string ValidationError_GatewaySerialNumberAlreadyExist {
+            get {
+                return ResourceManager.GetString("ValidationError_GatewaySerialNumberAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {PropertyName} is required.
+        /// </summary>
+        internal static string ValidationError_PropertyRequired {
+            get {
+                return ResourceManager.GetString("ValidationError_PropertyRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The IPv4 address is invalid.
+        /// </summary>
+        internal static string ValidationError_WrongIPv4Address {
+            get {
+                return ResourceManager.GetString("ValidationError_WrongIPv4Address", resourceCulture);
+            }
+        }
     }
 }

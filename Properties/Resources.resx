@@ -120,4 +120,13 @@
   <data name="Error_General" xml:space="preserve">
     <value>Something went wrong please try again in a few minutes. If the problem persists contact technical support</value>
   </data>
+  <data name="ValidationError_GatewaySerialNumberAlreadyExist" xml:space="preserve">
+    <value>The Serial Number already exists in the database</value>
+  </data>
+  <data name="ValidationError_PropertyRequired" xml:space="preserve">
+    <value>The {PropertyName} is required</value>
+  </data>
+  <data name="ValidationError_WrongIPv4Address" xml:space="preserve">
+    <value>The IPv4 address is invalid</value>
+  </data>
 </root>
