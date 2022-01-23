@@ -87,6 +87,7 @@ namespace Gateways.NET.Controllers
         /// Updates a Gateway properties
         /// </summary>
         /// <param name="model">Gateway model</param>
+        /// /// <param name="id">Gateway ID</param>
         /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -117,7 +118,8 @@ namespace Gateways.NET.Controllers
         /// <summary>
         /// Add a new Peripheral device and attaches it to the Gateway
         /// </summary>
-        /// <param name="model">Gateway model</param>
+        /// <param name="model">Peripheral device model</param>
+        /// /// <param name="id">Gateway ID</param>
         /// <returns></returns>
         [HttpPost("{id}/peripherals")]
         [ProducesResponseType(StatusCodes.Status201Created)]

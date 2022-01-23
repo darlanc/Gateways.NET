@@ -16,7 +16,8 @@ namespace Gateways.NET
         /// Register UnitOfWork and DbContext to DI
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="options"></param>
+        /// <param name="ConnectionString"></param>
+        /// <param name="sensitiveDataLogging"></param>
         public static void RegisterUnitOfWork(this IServiceCollection services, string ConnectionString, bool sensitiveDataLogging = true)
         {
             services.AddDbContext<GatewaysDbContext>(options => {
@@ -52,8 +53,8 @@ namespace Gateways.NET
             }
         }
 
-        // <summary>
-        /// Add Command Handlers & Validators to DI
+        /// <summary>
+        /// Add Command Handlers and Validators to DI
         /// </summary>
         /// <param name="services"></param>
         public static void AddCommands(this IServiceCollection services)

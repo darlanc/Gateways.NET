@@ -87,6 +87,7 @@ namespace Gateways.NET.Controllers
         /// Updates a Peripheral device properties
         /// </summary>
         /// <param name="model">Peripheral device model</param>
+        /// <param name="id">ID of the Peripheral device</param>
         /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -117,7 +118,8 @@ namespace Gateways.NET.Controllers
         /// <summary>
         /// Attaches a Peripheral device to a Gateway
         /// </summary>
-        /// <param name="model">Peripheral device model</param>
+        /// <param name="model">Peripheral device Attach model</param>
+        /// /// <param name="id">ID of the Peripheral device</param>
         /// <returns></returns>
         [HttpPatch("{id}/attach")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -150,7 +152,7 @@ namespace Gateways.NET.Controllers
         /// <summary>
         /// Detaches a Peripheral device from it's currently associated Gateway
         /// </summary>
-        /// <param name="model">Peripheral device model</param>
+        /// <param name="id">ID of the Peripheral device</param>
         /// <returns></returns>
         [HttpPatch("{id}/detach")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -183,6 +185,7 @@ namespace Gateways.NET.Controllers
         /// Updates a Peripheral device status (ON/OFF)
         /// </summary>
         /// <param name="model">Peripheral device model</param>
+        /// /// <param name="id">ID of the Peripheral device</param>
         /// <returns></returns>
         [HttpPatch("{id}/status")]
         [ProducesResponseType(StatusCodes.Status200OK)]
