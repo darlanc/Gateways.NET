@@ -11,6 +11,11 @@ namespace Gateways.NET.Contracts
     {
     }
 
+    public interface IEntityUpdateCommand<TKey> : ICommand
+    {
+        TKey Id { get; }
+    }
+
     /// <summary>
     /// ICommand extension methods
     /// </summary>

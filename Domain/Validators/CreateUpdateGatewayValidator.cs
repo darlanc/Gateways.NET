@@ -3,10 +3,6 @@ using Gateways.NET.Contracts;
 using Gateways.NET.Domain.Commands;
 using Gateways.NET.Models;
 using Gateways.NET.Properties;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Gateways.NET.Domain.Validators
 {
@@ -21,8 +17,26 @@ namespace Gateways.NET.Domain.Validators
                 .NotEmpty().WithMessage(Resources.ValidationError_PropertyRequired);
             RuleFor(b => b.IpAddress)
                 .NotEmpty().WithMessage(Resources.ValidationError_PropertyRequired)
-                .DependentRules( ()=> RuleFor(p=>p.IpAddress).Matches(Ipv4Regex) );
+                .DependentRules(() => RuleFor(p => p.IpAddress).Matches(Ipv4Regex))
+                .WithMessage(Resources.ValidationError_WrongIPv4Address);
             RuleFor(p => p).IsUnique(repository).WithMessage(Resources.ValidationError_GatewaySerialNumberAlreadyExist);
+        }
+    }
+
+    public class CreateGatewayValidator : CreateUpdateGatewayValidator<CreateGatewayCommand>
+    {
+        public CreateGatewayValidator(IRepository<Gateway> repository)
+            : base(repository)
+        {
+        }
+    }
+
+    public class UpdateGatewayValidator : CreateUpdateGatewayValidator<UpdateGatewayCommand>
+    {
+        public UpdateGatewayValidator(IRepository<Gateway> repository)
+            : base(repository)
+        {
+            RuleFor(p => p).ExistsInDatabase(repository).WithMessage(Resources.ValidationError_GatewayNotFound);
         }
     }
 }

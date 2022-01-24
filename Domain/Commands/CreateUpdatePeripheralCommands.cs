@@ -40,7 +40,7 @@ namespace Gateways.NET.Domain.Commands
     /// <summary>
     /// Command for update a Peripheral device
     /// </summary>
-    public class UpdatePeripheralCommand : PeripheralCommandBase
+    public class UpdatePeripheralCommand : PeripheralCommandBase, IEntityUpdateCommand<int>
     {
         public int Id { get; set; }
     }

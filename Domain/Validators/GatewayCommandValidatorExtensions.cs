@@ -18,6 +18,13 @@ namespace Gateways.NET.Domain.Validators
             });
         }
 
-
+        public static IRuleBuilderOptions<TCommand, TCommand> ExistsInDatabase<TCommand>(this IRuleBuilder<TCommand, TCommand> ruleBuilder, IRepository<Gateway> repository) where TCommand : IEntityUpdateCommand<int>
+        {
+            return ruleBuilder.MustAsync(async (command, pmCommand, cancellation) =>
+            {
+                var item = await repository.FindByIdAsync(pmCommand.Id);
+                return item != null;
+            });
+        }        
     }
 }

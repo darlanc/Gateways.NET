@@ -68,7 +68,7 @@ namespace Gateways.NET.Controllers
         {
             try
             {
-                var command = new DeleteGatewayCommand { GatewayId = id };
+                var command = new DeleteGatewayCommand { Id = id };
                 var commandResponse = await _dispatcher.DispatchAsync(command);
                 if (commandResponse.Errors?.Any() == true)
                     return Error(commandResponse.Errors, (int)commandResponse.Code);

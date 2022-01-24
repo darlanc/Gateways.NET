@@ -633,7 +633,7 @@
             Command for delete a Gateway
             </summary>
         </member>
-        <member name="P:Gateways.NET.Domain.Commands.DeleteGatewayCommand.GatewayId">
+        <member name="P:Gateways.NET.Domain.Commands.DeleteGatewayCommand.Id">
             <summary>
             ID of the Gateway
             </summary>
@@ -643,7 +643,7 @@
             Command for delete a Peripheral device
             </summary>
         </member>
-        <member name="P:Gateways.NET.Domain.Commands.DeletePeripheralCommand.PeripheralId">
+        <member name="P:Gateways.NET.Domain.Commands.DeletePeripheralCommand.Id">
             <summary>
             Peripheral device ID
             </summary>
@@ -653,7 +653,7 @@
             Command for detach a Peripheral device from it's associated Gateway
             </summary>
         </member>
-        <member name="P:Gateways.NET.Domain.Commands.DetachPeripheralCommand.PeripheralId">
+        <member name="P:Gateways.NET.Domain.Commands.DetachPeripheralCommand.Id">
             <summary>
             ID of the peripheral device
             </summary>
@@ -839,9 +839,29 @@
               Looks up a localized string similar to Something went wrong please try again in a few minutes. If the problem persists contact technical support.
             </summary>
         </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_GatewayNotFound">
+            <summary>
+              Looks up a localized string similar to Gateway not found.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_GatewayOrPeripheralNotFound">
+            <summary>
+              Looks up a localized string similar to Either Gateway or Peripheral device not found.
+            </summary>
+        </member>
         <member name="P:Gateways.NET.Properties.Resources.ValidationError_GatewaySerialNumberAlreadyExist">
             <summary>
               Looks up a localized string similar to The Serial Number already exists in the database.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_PeripheralNotFound">
+            <summary>
+              Looks up a localized string similar to Peripheral device not found.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_PeripheralUIDAlreadyExist">
+            <summary>
+              Looks up a localized string similar to The UID already exists in the database.
             </summary>
         </member>
         <member name="P:Gateways.NET.Properties.Resources.ValidationError_PropertyRequired">

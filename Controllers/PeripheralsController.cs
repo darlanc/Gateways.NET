@@ -68,7 +68,7 @@ namespace Gateways.NET.Controllers
         {
             try
             {
-                var command = new DeletePeripheralCommand { PeripheralId = id };
+                var command = new DeletePeripheralCommand { Id = id };
                 var commandResponse = await _dispatcher.DispatchAsync(command);
                 if (commandResponse.Errors?.Any() == true)
                     return Error(commandResponse.Errors, (int)commandResponse.Code);
@@ -164,7 +164,7 @@ namespace Gateways.NET.Controllers
             {
                 var command = new DetachPeripheralCommand
                 {
-                    PeripheralId = id                    
+                    Id = id                    
                 };
 
                 var commandResponse = await _dispatcher.DispatchAsync(command);

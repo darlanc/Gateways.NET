@@ -70,11 +70,47 @@ namespace Gateways.NET.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gateway not found.
+        /// </summary>
+        internal static string ValidationError_GatewayNotFound {
+            get {
+                return ResourceManager.GetString("ValidationError_GatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either Gateway or Peripheral device not found.
+        /// </summary>
+        internal static string ValidationError_GatewayOrPeripheralNotFound {
+            get {
+                return ResourceManager.GetString("ValidationError_GatewayOrPeripheralNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Serial Number already exists in the database.
         /// </summary>
         internal static string ValidationError_GatewaySerialNumberAlreadyExist {
             get {
                 return ResourceManager.GetString("ValidationError_GatewaySerialNumberAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peripheral device not found.
+        /// </summary>
+        internal static string ValidationError_PeripheralNotFound {
+            get {
+                return ResourceManager.GetString("ValidationError_PeripheralNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The UID already exists in the database.
+        /// </summary>
+        internal static string ValidationError_PeripheralUIDAlreadyExist {
+            get {
+                return ResourceManager.GetString("ValidationError_PeripheralUIDAlreadyExist", resourceCulture);
             }
         }
         
