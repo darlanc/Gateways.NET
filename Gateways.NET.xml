@@ -359,7 +359,7 @@
             </summary>
             <returns>List of Billers</returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.PeripheralsController.AddPeripheral(Gateways.NET.DTOs.GatewayViewModel)">
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.AddPeripheral(Gateways.NET.DTOs.PeripheralViewModel)">
             <summary>
             Add a new Peripheral device
             </summary>
