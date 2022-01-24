@@ -5,6 +5,7 @@ using Gateways.NET.Repository.Infraestructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -86,6 +87,32 @@ namespace Gateways.NET
                     if (cache.TryGetValue(validationInterfaceType, out Type validatorType))
                         services.AddScoped(validationInterfaceType, validatorType);
                 }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="others"></param>
+        public static void AddQueryServices(this IServiceCollection services, params Assembly[] others)
+        {
+            List<Assembly> assemblies = new List<Assembly>();
+            if (others != null)
+                assemblies.AddRange(others);
+            assemblies.Add(Assembly.GetExecutingAssembly());
+
+            List<Type> existServices = new List<Type>();
+            foreach (var assembly in assemblies)
+                existServices.AddRange(assembly.GetTypes().Where(p => p.IsClass && !p.IsAbstract && p.GetInterfaces().Contains(typeof(IQueryService))));
+
+            foreach (var service in existServices)
+            {
+                var referenceInterfaces = service
+                    .GetInterfaces()
+                    .Where(p => p.GetInterfaces().Contains(typeof(IQueryService)));
+                foreach (var @interface in referenceInterfaces)
+                    services.AddScoped(@interface, service);
             }
         }
     }

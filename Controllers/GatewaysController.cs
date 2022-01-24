@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,15 +18,17 @@ namespace Gateways.NET.Controllers
     [Route("[controller]")]
     public class GatewaysController : ApiBaseController
     {
-        ILogger<GatewaysController> _logger;
+        private readonly ILogger<GatewaysController> _logger;
         private readonly IMapper _mapper;
         private readonly ICommandDispatcher _dispatcher;
+        private readonly IGatewaysQueryService _queryService;
 
-        public GatewaysController(IMapper mapper, ICommandDispatcher dispatcher, ILogger<GatewaysController> logger)
+        public GatewaysController(IMapper mapper, ICommandDispatcher dispatcher, ILogger<GatewaysController> logger, IGatewaysQueryService queryService)
         {
             _mapper = mapper;
             _dispatcher = dispatcher;
             _logger = logger;
+            _queryService = queryService;
         }
 
         /// <summary>
@@ -93,7 +96,7 @@ namespace Gateways.NET.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ApiResponse<FullGatewayViewModel>> UpdateGateway([FromBody]GatewayViewModel model, int id)
+        public async Task<ApiResponse<FullGatewayViewModel>> UpdateGateway([FromBody] GatewayViewModel model, int id)
         {
             try
             {
@@ -125,7 +128,7 @@ namespace Gateways.NET.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ApiResponse<FullPeripheralViewModel>> AddPeripheral([FromBody]PeripheralViewModel model, int id)
+        public async Task<ApiResponse<FullPeripheralViewModel>> AddPeripheral([FromBody] PeripheralViewModel model, int id)
         {
             try
             {
@@ -146,5 +149,77 @@ namespace Gateways.NET.Controllers
                 return Error<FullPeripheralViewModel>(Resources.Error_General, StatusCodes.Status500InternalServerError);
             }
         }
+
+        /// <summary>
+        /// Get the list of existing gateways and their associated peripheral devices.
+        /// </summary>
+        /// <returns>List of Billers</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ApiResponse<IEnumerable<FullGatewayViewModel>>> GetAll([FromQuery] PaginationViewModel pagination)
+        {
+            try
+            {
+                var source = await _queryService.GetAll(pagination);
+                var result = _mapper.Map<IEnumerable<FullGatewayViewModel>>(source);
+                return Respond<IEnumerable<FullGatewayViewModel>>(payload: result);
+            }
+            catch (Exception ex)
+            {
+                if (_logger != null)
+                    _logger.LogError(ex, ex.Message);
+                return Error<IEnumerable<FullGatewayViewModel>> (Resources.Error_General, StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Get the list of associated peripheral devices of a Gateway.
+        /// </summary>
+        /// <returns>List of Billers</returns>
+        [HttpGet("{id}/peripherals")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ApiResponse<IEnumerable<FullPeripheralViewModel>>> GetPeripherals(int id)
+        {
+            try
+            {
+                var exists = await _queryService.Exists(id);
+                if (!exists)
+                    return Error<IEnumerable<FullPeripheralViewModel>>(Resources.ValidationError_GatewayNotFound, StatusCodes.Status404NotFound);
+                var source = await _queryService.GetPeripherals(id);
+                var result = _mapper.Map<IEnumerable<FullPeripheralViewModel>>(source);
+                return Respond<IEnumerable<FullPeripheralViewModel>>(payload: result);
+            }
+            catch (Exception ex)
+            {
+                if (_logger != null)
+                    _logger.LogError(ex, ex.Message);
+                return Error<IEnumerable<FullPeripheralViewModel>>(Resources.Error_General, StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Get a Gateway properties and the list of associated peripheral devices.
+        /// </summary>
+        /// <returns>List of Billers</returns>
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ApiResponse<FullGatewayViewModel>> GetGateway(int id)
+        {
+            try
+            {
+                var gateway = await _queryService.FindById(id);
+                if (gateway == null)
+                    return Error<FullGatewayViewModel>(Resources.ValidationError_GatewayNotFound, StatusCodes.Status404NotFound);
+                var result = _mapper.Map<FullGatewayViewModel>(gateway);
+                return Respond<FullGatewayViewModel>(payload: result);
+            }
+            catch (Exception ex)
+            {
+                if (_logger != null)
+                    _logger.LogError(ex, ex.Message);
+                return Error<FullGatewayViewModel>(Resources.Error_General, StatusCodes.Status500InternalServerError);
+            }
+        }
+
     }
 }
