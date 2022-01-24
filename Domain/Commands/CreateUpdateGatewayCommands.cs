@@ -1,4 +1,5 @@
 ﻿using Gateways.NET.Contracts;
+using Gateways.NET.Models;
 
 namespace Gateways.NET.Domain.Commands
 {
@@ -31,7 +32,7 @@ namespace Gateways.NET.Domain.Commands
     /// <summary>
     /// Command for update a Gateway
     /// </summary>
-    public class UpdateGatewayCommand : GatewayCommandBase
+    public class UpdateGatewayCommand : GatewayCommandBase, IEntityUpdateCommand<int>
     {
         /// <summary>
         /// ID of the Gateway

@@ -20,7 +20,7 @@ namespace Gateways.NET.Core
             Total = total;
             var totalPages = total % pageSize > 0 ? total / pageSize + 1 : total / pageSize;
 
-            Paging = new Pagination
+            Paging = new PaginationViewModel
             {
                 Page = current,
                 PageSize = pageSize,

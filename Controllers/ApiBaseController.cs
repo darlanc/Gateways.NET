@@ -158,7 +158,7 @@ namespace Gateways.NET.Controllers
 		/// <summary>
 		/// Return an Error response from an error message.
 		/// </summary>
-		/// <param name="errors"></param>
+		/// <param name="error"></param>
 		/// <param name="status"></param>
 		/// <returns></returns>
 		protected ApiResponse Error(string error, int status = StatusCodes.Status400BadRequest)

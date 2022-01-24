@@ -36,6 +36,6 @@ namespace Gateways.NET.DTOs
         /// <summary>
         /// List of attached Peripheral devices
         /// </summary>
-        public PeripheralViewModel[] Peripherals { get; set; }
+        public FullPeripheralViewModel[] Peripherals { get; set; }
     }
 }

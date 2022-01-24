@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.PlatformAbstractions;
 using System;
+using System.IO;
+using System.Reflection;
 
 namespace Gateways.NET
 {
@@ -29,9 +32,10 @@ namespace Gateways.NET
 
             #endregion
 
-            #region [ Commands Handlers & Validators ]
+            #region [ Commands Handlers, Validators & Query Services]
 
             services.AddCommands();
+            services.AddQueryServices();
 
             #endregion
 
@@ -73,7 +77,9 @@ namespace Gateways.NET
 
             #region [ Swagger ] 
 
-            services.AddSwaggerGen();       
+            services.AddSwaggerGen(options => {
+                options.IncludeXmlComments(XmlCommentsFilePath);
+            });
 
             #endregion
         }
@@ -107,6 +113,16 @@ namespace Gateways.NET
             {
                 endpoints.MapControllers();
             });
-        }        
+        }
+
+        protected static string XmlCommentsFilePath
+        {
+            get
+            {
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
+                return Path.Combine(basePath, fileName);
+            }
+        }
     }
 }

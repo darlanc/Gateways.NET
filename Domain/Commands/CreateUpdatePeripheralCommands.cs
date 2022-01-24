@@ -19,11 +19,6 @@ namespace Gateways.NET.Domain.Commands
         public string Vendor { get; set; }
 
         /// <summary>
-        /// Creation date of the device
-        /// </summary>
-        public DateTime CreationDate { get; set; }
-
-        /// <summary>
         /// Status (Online = true / Offline = false)
         /// </summary>
         public bool Status { get; set; }
@@ -40,7 +35,7 @@ namespace Gateways.NET.Domain.Commands
     /// <summary>
     /// Command for update a Peripheral device
     /// </summary>
-    public class UpdatePeripheralCommand : PeripheralCommandBase
+    public class UpdatePeripheralCommand : PeripheralCommandBase, IEntityUpdateCommand<int>
     {
         public int Id { get; set; }
     }

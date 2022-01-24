@@ -61,11 +61,83 @@ namespace Gateways.NET.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Gateway is full. Only {0} peripheral devices allowed.
+        /// </summary>
+        internal static string Error_FullGateway {
+            get {
+                return ResourceManager.GetString("Error_FullGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong please try again in a few minutes. If the problem persists contact technical support.
         /// </summary>
         internal static string Error_General {
             get {
                 return ResourceManager.GetString("Error_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gateway not found.
+        /// </summary>
+        internal static string ValidationError_GatewayNotFound {
+            get {
+                return ResourceManager.GetString("ValidationError_GatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either Gateway or Peripheral device not found.
+        /// </summary>
+        internal static string ValidationError_GatewayOrPeripheralNotFound {
+            get {
+                return ResourceManager.GetString("ValidationError_GatewayOrPeripheralNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Serial Number already exists in the database.
+        /// </summary>
+        internal static string ValidationError_GatewaySerialNumberAlreadyExist {
+            get {
+                return ResourceManager.GetString("ValidationError_GatewaySerialNumberAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peripheral device not found.
+        /// </summary>
+        internal static string ValidationError_PeripheralNotFound {
+            get {
+                return ResourceManager.GetString("ValidationError_PeripheralNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The UID already exists in the database.
+        /// </summary>
+        internal static string ValidationError_PeripheralUIDAlreadyExist {
+            get {
+                return ResourceManager.GetString("ValidationError_PeripheralUIDAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {PropertyName} is required.
+        /// </summary>
+        internal static string ValidationError_PropertyRequired {
+            get {
+                return ResourceManager.GetString("ValidationError_PropertyRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The IPv4 address is invalid.
+        /// </summary>
+        internal static string ValidationError_WrongIPv4Address {
+            get {
+                return ResourceManager.GetString("ValidationError_WrongIPv4Address", resourceCulture);
             }
         }
     }

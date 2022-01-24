@@ -5,11 +5,11 @@ namespace Gateways.NET.Domain.Commands
     /// <summary>
     /// Command for delete a Peripheral device
     /// </summary>
-    public class DeletePeripheralCommand : ICommand
+    public class DeletePeripheralCommand : IEntityUpdateCommand<int>
     {
         /// <summary>
         /// Peripheral device ID
         /// </summary>
-        public int PeripheralId { get; set; }
+        public int Id { get; set; }
     }
 }
