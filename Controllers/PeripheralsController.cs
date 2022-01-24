@@ -34,7 +34,7 @@ namespace Gateways.NET.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ApiResponse<FullPeripheralViewModel>> AddPeripheral(GatewayViewModel model)
+        public async Task<ApiResponse<FullPeripheralViewModel>> AddPeripheral(PeripheralViewModel model)
         {
             try
             {
