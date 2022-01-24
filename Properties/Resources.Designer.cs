@@ -61,6 +61,15 @@ namespace Gateways.NET.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Gateway is full. Only {0} peripheral devices allowed.
+        /// </summary>
+        internal static string Error_FullGateway {
+            get {
+                return ResourceManager.GetString("Error_FullGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong please try again in a few minutes. If the problem persists contact technical support.
         /// </summary>
         internal static string Error_General {

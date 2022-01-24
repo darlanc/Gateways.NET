@@ -341,7 +341,7 @@
             /// <param name="id">Gateway ID</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.GatewaysController.GetAll(Gateways.NET.Core.PaginationViewModel)">
+        <member name="M:Gateways.NET.Controllers.GatewaysController.GetAll(Gateways.NET.Core.Pagination)">
             <summary>
             Get the list of existing gateways and their associated peripheral devices.
             </summary>
@@ -621,11 +621,6 @@
             Vendor name
             </summary>
         </member>
-        <member name="P:Gateways.NET.Domain.Commands.PeripheralCommandBase.CreationDate">
-            <summary>
-            Creation date of the device
-            </summary>
-        </member>
         <member name="P:Gateways.NET.Domain.Commands.PeripheralCommandBase.Status">
             <summary>
             Status (Online = true / Offline = false)
@@ -756,11 +751,6 @@
             Vendor name
             </summary>
         </member>
-        <member name="P:Gateways.NET.DTOs.PeripheralViewModel.CreationDate">
-            <summary>
-            Creation date of the device
-            </summary>
-        </member>
         <member name="P:Gateways.NET.DTOs.PeripheralViewModel.Status">
             <summary>
             Status (Online = true / Offline = false)
@@ -779,6 +769,11 @@
         <member name="P:Gateways.NET.DTOs.FullPeripheralViewModel.GatewayId">
             <summary>
             ID of the associated Gateway (if there is one)
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.DTOs.FullPeripheralViewModel.CreationDate">
+            <summary>
+            Creation date of the device
             </summary>
         </member>
         <member name="P:Gateways.NET.Models.Gateway.SerialNumber">
@@ -850,6 +845,11 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.Error_FullGateway">
+            <summary>
+              Looks up a localized string similar to The Gateway is full. Only {0} peripheral devices allowed.
             </summary>
         </member>
         <member name="P:Gateways.NET.Properties.Resources.Error_General">

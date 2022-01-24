@@ -18,8 +18,7 @@ namespace Gateways.NET.Domain.Validators
             RuleFor(b => b.IpAddress)
                 .NotEmpty().WithMessage(Resources.ValidationError_PropertyRequired)
                 .DependentRules(() => RuleFor(p => p.IpAddress).Matches(Ipv4Regex))
-                .WithMessage(Resources.ValidationError_WrongIPv4Address);
-            RuleFor(p => p).IsUnique(repository).WithMessage(Resources.ValidationError_GatewaySerialNumberAlreadyExist);
+                .WithMessage(Resources.ValidationError_WrongIPv4Address);            
         }
     }
 
@@ -28,6 +27,7 @@ namespace Gateways.NET.Domain.Validators
         public CreateGatewayValidator(IRepository<Gateway> repository)
             : base(repository)
         {
+            RuleFor(p => p).IsUnique(repository).WithMessage(Resources.ValidationError_GatewaySerialNumberAlreadyExist);
         }
     }
 

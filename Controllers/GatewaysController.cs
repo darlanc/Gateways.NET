@@ -138,7 +138,7 @@ namespace Gateways.NET.Controllers
                 if (commandResponse.Errors?.Any() == true)
                     return Error<FullPeripheralViewModel>(commandResponse.Errors, (int)commandResponse.Code);
 
-                var result = (commandResponse as CommandResponse<FullGatewayViewModel>).Body;
+                var result = (commandResponse as CommandResponse<FullPeripheralViewModel>).Body;
 
                 return Respond<FullPeripheralViewModel>(payload: result, status: StatusCodes.Status201Created);
             }
@@ -156,7 +156,7 @@ namespace Gateways.NET.Controllers
         /// <returns>List of Billers</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ApiResponse<IEnumerable<FullGatewayViewModel>>> GetAll([FromQuery] PaginationViewModel pagination)
+        public async Task<ApiResponse<IEnumerable<FullGatewayViewModel>>> GetAll([FromQuery] Pagination pagination)
         {
             try
             {

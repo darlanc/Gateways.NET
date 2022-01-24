@@ -12,6 +12,8 @@ namespace Gateways.NET.MappingProfiles
             CreateMap<PeripheralViewModel, CreatePeripheralCommand>();
             CreateMap<PeripheralViewModel, UpdatePeripheralCommand>().ForMember(x => x.Id, op => op.Ignore());
             CreateMap<Peripheral, FullPeripheralViewModel>();
+            CreateMap<AddPeripheralToGatewayCommand, CreatePeripheralCommand>();
+            CreateMap<CreatePeripheralCommand,Peripheral>().ForMember(x => x.Id, op => op.Ignore()).ForMember(x=>x.GatewayId, op=>op.Ignore());
         }
     }
 }

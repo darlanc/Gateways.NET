@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Handlers\" />
     <Folder Include="Repository\" />
   </ItemGroup>
 

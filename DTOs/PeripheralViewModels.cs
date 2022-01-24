@@ -15,12 +15,7 @@ namespace Gateways.NET.DTOs
         /// <summary>
         /// Vendor name
         /// </summary>
-        public string Vendor { get; set; }
-
-        /// <summary>
-        /// Creation date of the device
-        /// </summary>
-        public DateTime CreationDate { get; set; }
+        public string Vendor { get; set; }        
 
         /// <summary>
         /// Status (Online = true / Offline = false)
@@ -43,5 +38,10 @@ namespace Gateways.NET.DTOs
         /// ID of the associated Gateway (if there is one)
         /// </summary>
         public int? GatewayId { get; set; }
+
+        /// <summary>
+        /// Creation date of the device
+        /// </summary>
+        public DateTime CreationDate { get; set; }
     }
 }
