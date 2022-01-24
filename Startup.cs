@@ -32,9 +32,10 @@ namespace Gateways.NET
 
             #endregion
 
-            #region [ Commands Handlers & Validators ]
+            #region [ Commands Handlers, Validators & Query Services]
 
             services.AddCommands();
+            services.AddQueryServices();
 
             #endregion
 

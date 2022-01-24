@@ -91,7 +91,7 @@ namespace Gateways.NET
         }
 
         /// <summary>
-        /// 
+        /// Add query services to DI
         /// </summary>
         /// <param name="services"></param>
         /// <param name="others"></param>

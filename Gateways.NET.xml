@@ -974,7 +974,7 @@
         </member>
         <member name="M:Gateways.NET.ServicesCollectionExtensions.AddQueryServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">
             <summary>
-            
+            Add query services to DI
             </summary>
             <param name="services"></param>
             <param name="others"></param>
