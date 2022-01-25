@@ -1,4 +1,4 @@
-﻿using Gateways.NET.Core;
+﻿using Gateways.NET.ViewModels;
 using System.Collections.Generic;
 using System.Net;
 

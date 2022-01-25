@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Gateways.NET.Domain.Commands;
-using Gateways.NET.DTOs;
+using Gateways.NET.CoreViewModels;
 using Gateways.NET.Models;
 
 namespace Gateways.NET.MappingProfiles

@@ -1,5 +1,5 @@
 ﻿using Gateways.NET.Contracts;
-using Gateways.NET.Core;
+using Gateways.NET.ViewModels;
 using Gateways.NET.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

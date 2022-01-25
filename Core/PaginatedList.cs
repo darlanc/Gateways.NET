@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Gateways.NET.Contracts;
+using System.Collections.Generic;
 
-namespace Gateways.NET.Core
+namespace Gateways.NET.ViewModels
 {
     /// <summary>
     /// Paginated List

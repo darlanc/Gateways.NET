@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Gateways.NET.Core
+namespace Gateways.NET.ViewModels
 {
     /// <summary>
     /// Generic base class of query services over entities

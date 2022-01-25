@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gateways.NET.Core
+namespace Gateways.NET.ViewModels
 {
     /// <summary>
     /// Order Column

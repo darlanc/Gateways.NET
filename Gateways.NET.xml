@@ -4,43 +4,6 @@
         <name>Gateways.NET</name>
     </assembly>
     <members>
-        <member name="T:Gateways.NET.Contracts.ApiResponse">
-            <summary>
-            Basic API Response
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Contracts.ApiResponse.Status">
-            <summary>
-            Status
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Contracts.ApiResponse.Errors">
-            <summary>
-            Errors
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.Contracts.ApiResponse`1">
-            <summary>
-            Generic payload API response
-            </summary>
-            <typeparam name="T">Generic payload type</typeparam>
-        </member>
-        <member name="P:Gateways.NET.Contracts.ApiResponse`1.Payload">
-            <summary>
-            Payload
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.Contracts.PaginatedApiResponse`1">
-            <summary>
-            Generic paginated payload API response
-            </summary>
-            <typeparam name="T">Generic payload type</typeparam>
-        </member>
-        <member name="P:Gateways.NET.Contracts.PaginatedApiResponse`1.Paging">
-            <summary>
-            Paging information
-            </summary>
-        </member>
         <member name="T:Gateways.NET.Contracts.BaseEntity`1">
             <summary>
             Base entity
@@ -184,21 +147,6 @@
             
             </summary>
         </member>
-        <member name="T:Gateways.NET.Contracts.IPaginationModel">
-            <summary>
-            General pagination model interface
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Contracts.IPaginationModel.Page">
-            <summary>
-            Page index
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Contracts.IPaginationModel.PageSize">
-            <summary>
-            Page size
-            </summary>
-        </member>
         <member name="T:Gateways.NET.Contracts.IQueryService">
             <summary>
             Basic query service interface
@@ -239,7 +187,7 @@
             <param name="contentType"></param>
             <param name="status"></param>
         </member>
-        <member name="M:Gateways.NET.Controllers.ApiBaseController.Respond``1(System.Object,System.Int32,System.Collections.Generic.IEnumerable{Gateways.NET.DTOs.Error},System.String,Microsoft.AspNetCore.Http.HeaderDictionary,Gateways.NET.Core.Pagination)">
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Respond``1(System.Object,System.Int32,System.Collections.Generic.IEnumerable{Gateways.NET.CoreViewModels.Error},System.String,Microsoft.AspNetCore.Http.HeaderDictionary,Gateways.NET.Contracts.Pagination)">
             <summary>
             Create an API Response
             </summary>
@@ -249,10 +197,10 @@
             <param name="errors">Error List</param>
             <param name="contentType">Reponse Content Type</param>
             <param name="headers">Response Headers <see cref="T:Microsoft.AspNetCore.Http.HeaderDictionary"/></param>
-            <param name="paging">Pagination Info. <see cref="T:Gateways.NET.Core.Pagination"/></param>		
+            <param name="paging">Pagination Info. <see cref="T:Gateways.NET.Contracts.Pagination"/></param>		
             <returns><see cref="T:Gateways.NET.Contracts.ApiResponse"/></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.ApiBaseController.Respond(System.Int32,System.Collections.Generic.IEnumerable{Gateways.NET.DTOs.Error},System.String,Microsoft.AspNetCore.Http.HeaderDictionary)">
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Respond(System.Int32,System.Collections.Generic.IEnumerable{Gateways.NET.CoreViewModels.Error},System.String,Microsoft.AspNetCore.Http.HeaderDictionary)">
             <summary>
             Create an Api Response
             </summary>
@@ -262,7 +210,7 @@
             <param name="headers">Response Headers <see cref="T:Microsoft.AspNetCore.Http.HeaderDictionary"/></param>
             <returns><see cref="T:Gateways.NET.Contracts.ApiResponse"/></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.ApiBaseController.PaginatedResponse``1(Gateways.NET.Core.PaginatedList{``0})">
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.PaginatedResponse``1(Gateways.NET.ViewModels.PaginatedList{``0})">
             <summary>
             Returns a Generic Paginated Response.
             </summary>
@@ -295,7 +243,7 @@
             <param name="status"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error``1(System.Collections.Generic.IEnumerable{Gateways.NET.DTOs.Error},System.Int32)">
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error``1(System.Collections.Generic.IEnumerable{Gateways.NET.CoreViewModels.Error},System.Int32)">
             <summary>
             Return a Generic Error response from an Error collection.
             </summary>
@@ -313,7 +261,7 @@
             <param name="status"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.GatewaysController.AddGateway(Gateways.NET.DTOs.GatewayViewModel)">
+        <member name="M:Gateways.NET.Controllers.GatewaysController.AddGateway(Gateways.NET.CoreViewModels.GatewayViewModel)">
             <summary>
             Add a new Gateway
             </summary>
@@ -325,7 +273,7 @@
             <param name="id">ID of the Gateway</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.GatewaysController.UpdateGateway(Gateways.NET.DTOs.GatewayViewModel,System.Int32)">
+        <member name="M:Gateways.NET.Controllers.GatewaysController.UpdateGateway(Gateways.NET.CoreViewModels.GatewayViewModel,System.Int32)">
             <summary>
             Updates a Gateway properties
             </summary>
@@ -333,7 +281,7 @@
             /// <param name="id">Gateway ID</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.GatewaysController.AddPeripheral(Gateways.NET.DTOs.PeripheralViewModel,System.Int32)">
+        <member name="M:Gateways.NET.Controllers.GatewaysController.AddPeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel,System.Int32)">
             <summary>
             Add a new Peripheral device and attaches it to the Gateway
             </summary>
@@ -341,7 +289,7 @@
             /// <param name="id">Gateway ID</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.GatewaysController.GetAll(Gateways.NET.Core.Pagination)">
+        <member name="M:Gateways.NET.Controllers.GatewaysController.GetAll(Gateways.NET.Contracts.Pagination)">
             <summary>
             Get the list of existing gateways and their associated peripheral devices.
             </summary>
@@ -359,7 +307,7 @@
             </summary>
             <returns>List of Billers</returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.PeripheralsController.AddPeripheral(Gateways.NET.DTOs.PeripheralViewModel)">
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.AddPeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel)">
             <summary>
             Add a new Peripheral device
             </summary>
@@ -371,7 +319,7 @@
             <param name="id">ID of the Peripheral device</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.PeripheralsController.UpdatePeripheral(Gateways.NET.DTOs.PeripheralViewModel,System.Int32)">
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.UpdatePeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel,System.Int32)">
             <summary>
             Updates a Peripheral device properties
             </summary>
@@ -379,7 +327,7 @@
             <param name="id">ID of the Peripheral device</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.PeripheralsController.AttachPeripheral(Gateways.NET.DTOs.AttachPeripheralViewModel,System.Int32)">
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.AttachPeripheral(Gateways.NET.ViewModels.AttachPeripheralViewModel,System.Int32)">
             <summary>
             Attaches a Peripheral device to a Gateway
             </summary>
@@ -394,7 +342,7 @@
             <param name="id">ID of the Peripheral device</param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Controllers.PeripheralsController.UpdatePeripheralStatus(Gateways.NET.DTOs.PeripheralStatusViewModel,System.Int32)">
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.UpdatePeripheralStatus(Gateways.NET.CoreViewModels.PeripheralStatusViewModel,System.Int32)">
             <summary>
             Updates a Peripheral device status (ON/OFF)
             </summary>
@@ -402,13 +350,13 @@
             /// <param name="id">ID of the Peripheral device</param>
             <returns></returns>
         </member>
-        <member name="T:Gateways.NET.Core.BaseQueryService`1">
+        <member name="T:Gateways.NET.ViewModels.BaseQueryService`1">
             <summary>
             Generic base class of query services over entities
             </summary>
             <typeparam name="TEntity">Generic entity type</typeparam>
         </member>
-        <member name="M:Gateways.NET.Core.BaseQueryService`1.PaginationSearch(Gateways.NET.Core.PaginationViewModel,System.Collections.Generic.IEnumerable{Gateways.NET.Core.OrderColumn},System.String[],System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}[])">
+        <member name="M:Gateways.NET.ViewModels.BaseQueryService`1.PaginationSearch(Gateways.NET.Contracts.PaginationViewModel,System.Collections.Generic.IEnumerable{Gateways.NET.ViewModels.OrderColumn},System.String[],System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}[])">
             <summary>
             Search with pagination and ordering support
             </summary>
@@ -418,7 +366,7 @@
             <param name="criterias"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Core.BaseQueryService`1.Search(System.Collections.Generic.IEnumerable{Gateways.NET.Core.OrderColumn},System.String[],System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}[])">
+        <member name="M:Gateways.NET.ViewModels.BaseQueryService`1.Search(System.Collections.Generic.IEnumerable{Gateways.NET.ViewModels.OrderColumn},System.String[],System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}[])">
             <summary>
             Search and ordering support
             </summary>
@@ -427,66 +375,66 @@
             <param name="criterias"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Core.CommandDispatcher.DispatchAsync(Gateways.NET.Contracts.ICommand)">
+        <member name="M:Gateways.NET.ViewModels.CommandDispatcher.DispatchAsync(Gateways.NET.Contracts.ICommand)">
             <summary>
             Dispatches the command
             </summary>
             <param name="command">Command</param>
             <returns></returns>
         </member>
-        <member name="T:Gateways.NET.Core.CommandResponse`1">
+        <member name="T:Gateways.NET.ViewModels.CommandResponse`1">
             <summary>
             Basic command response implementation
             </summary>
             <typeparam name="TBody">Generic type of the response body</typeparam>
         </member>
-        <member name="P:Gateways.NET.Core.CommandResponse`1.Body">
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Body">
             <summary>
             Generic response body
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.CommandResponse`1.Code">
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Code">
             <summary>
             Http code associate with response.
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.CommandResponse`1.Success">
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Success">
             <summary>
             Indicates wheter the response is successful
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.CommandResponse`1.IsRedirect">
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.IsRedirect">
             <summary>
             Indicates wheter the response is a redirect
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.CommandResponse`1.Errors">
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Errors">
             <summary>
             Error messages
             </summary>
         </member>
-        <member name="T:Gateways.NET.Core.OrderColumn">
+        <member name="T:Gateways.NET.ViewModels.OrderColumn">
             <summary>
             Order Column
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.OrderColumn.Name">
+        <member name="P:Gateways.NET.ViewModels.OrderColumn.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.OrderColumn.Ascendant">
+        <member name="P:Gateways.NET.ViewModels.OrderColumn.Ascendant">
             <summary>
             Ascendant
             </summary>
         </member>
-        <member name="T:Gateways.NET.Core.PaginatedList`1">
+        <member name="T:Gateways.NET.ViewModels.PaginatedList`1">
             <summary>
             Paginated List
             </summary>
             <typeparam name="T">Generic Type</typeparam>
         </member>
-        <member name="M:Gateways.NET.Core.PaginatedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Int32)">
+        <member name="M:Gateways.NET.ViewModels.PaginatedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Int32)">
             <summary>
             Return a Paginated Response
             </summary>
@@ -495,37 +443,17 @@
             <param name="pageSize"></param>
             <param name="current"></param>
         </member>
-        <member name="P:Gateways.NET.Core.PaginatedList`1.Total">
+        <member name="P:Gateways.NET.ViewModels.PaginatedList`1.Total">
             <summary>
             Total
             </summary>
         </member>
-        <member name="P:Gateways.NET.Core.PaginatedList`1.Paging">
+        <member name="P:Gateways.NET.ViewModels.PaginatedList`1.Paging">
             <summary>
             Paging
             </summary>
         </member>
-        <member name="T:Gateways.NET.Core.Pagination">
-            <summary>
-            Pagination Model
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Core.Pagination.Page">
-            <summary>
-            Page
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Core.Pagination.PageSize">
-            <summary>
-            Page Size
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.Core.PaginationViewModel.TotalPages">
-            <summary>
-            Total number of pages of the current page size
-            </summary>
-        </member>
-        <member name="M:Gateways.NET.Core.QueryHelper.ApplyPagging``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.ApplyPagging``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
             <summary>
             Apply pagination pattern to a queryable source
             </summary>
@@ -535,7 +463,7 @@
             <param name="pageSize"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Core.QueryHelper.ApplyOrder``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{Gateways.NET.Core.OrderColumn})">
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.ApplyOrder``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{Gateways.NET.ViewModels.OrderColumn})">
             <summary>
             Apply a sort order to a queryable source
             </summary>
@@ -544,7 +472,7 @@
             <param name="orders"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Core.QueryHelper.ApplyFilters``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}})">
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.ApplyFilters``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}})">
             <summary>
             Apply filters to a queryable source
             </summary>
@@ -553,7 +481,7 @@
             <param name="criterias"></param>
             <returns></returns>
         </member>
-        <member name="M:Gateways.NET.Core.QueryHelper.BuildExpression``1(System.String)">
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.BuildExpression``1(System.String)">
             <summary>
             Builds a generic expression from a property name
             </summary>
@@ -684,96 +612,6 @@
         <member name="P:Gateways.NET.Domain.Commands.SetPeripheralStatusCommand.Status">
             <summary>
             Status of the Peripheral device
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.DTOs.Error">
-            <summary>
-            Error view model
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.Error.Code">
-            <summary>
-            Code
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.Error.Message">
-            <summary>
-            Message
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.DTOs.GatewayViewModel">
-            <summary>
-            View model of a Gateway
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.GatewayViewModel.SerialNumber">
-            <summary>
-            Serial number of the Gateway (unique)
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.GatewayViewModel.Name">
-            <summary>
-            Name of the Gateway
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.GatewayViewModel.IpAddress">
-            <summary>
-            IPv4 address of the Gateway
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.DTOs.FullGatewayViewModel">
-            <summary>
-            Full view model of a Gateway, including it's ID and the list of attached Peripheral devices
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.FullGatewayViewModel.Id">
-            <summary>
-            ID of the Gateway
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.FullGatewayViewModel.Peripherals">
-            <summary>
-            List of attached Peripheral devices
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.DTOs.PeripheralViewModel">
-            <summary>
-            View model of a Peripheral device
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.PeripheralViewModel.UID">
-            <summary>
-            User ID of the device
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.PeripheralViewModel.Vendor">
-            <summary>
-            Vendor name
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.PeripheralViewModel.Status">
-            <summary>
-            Status (Online = true / Offline = false)
-            </summary>
-        </member>
-        <member name="T:Gateways.NET.DTOs.FullPeripheralViewModel">
-            <summary>
-            Full view model of a Peripheral device, including it's ID and the ID of the associated Gateway (if there is one)
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.FullPeripheralViewModel.Id">
-            <summary>
-            ID of the Peripheral device
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.FullPeripheralViewModel.GatewayId">
-            <summary>
-            ID of the associated Gateway (if there is one)
-            </summary>
-        </member>
-        <member name="P:Gateways.NET.DTOs.FullPeripheralViewModel.CreationDate">
-            <summary>
-            Creation date of the device
             </summary>
         </member>
         <member name="P:Gateways.NET.Models.Gateway.SerialNumber">

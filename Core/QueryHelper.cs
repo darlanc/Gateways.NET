@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Gateways.NET.Core
+namespace Gateways.NET.ViewModels
 {
     public static class QueryHelper
     {

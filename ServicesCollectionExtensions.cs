@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Gateways.NET.Contracts;
-using Gateways.NET.Core;
+using Gateways.NET.ViewModels;
 using Gateways.NET.Repository.Infraestructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

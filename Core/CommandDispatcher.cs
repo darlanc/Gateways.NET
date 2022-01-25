@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gateways.NET.Core
+namespace Gateways.NET.ViewModels
 {
     public class CommandDispatcher : ICommandDispatcher
     {

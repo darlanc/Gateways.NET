@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Gateways.NET.Contracts;
-using Gateways.NET.Core;
+using Gateways.NET.ViewModels;
 using Gateways.NET.Domain.Commands;
-using Gateways.NET.DTOs;
+using Gateways.NET.CoreViewModels;
 using Gateways.NET.Properties;
 using System.Linq;
 using System.Threading.Tasks;

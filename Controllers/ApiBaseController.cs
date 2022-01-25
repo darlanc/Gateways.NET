@@ -1,22 +1,17 @@
 ﻿using Gateways.NET.Contracts;
-using Gateways.NET.Core;
-using Gateways.NET.DTOs;
+using Gateways.NET.ViewModels;
+using Gateways.NET.CoreViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.IO;
 using System.Linq;
-using System.Net.Mime;
-using System.Threading.Tasks;
 
 namespace Gateways.NET.Controllers
 {
-	/// <summary>
-	/// Base Api Controller
-	/// </summary>
-	[ApiController]
+    /// <summary>
+    /// Base Api Controller
+    /// </summary>
+    [ApiController]
 	[Produces("application/json")]
 	[Route("[controller]")]
 	public abstract class ApiBaseController : ControllerBase
