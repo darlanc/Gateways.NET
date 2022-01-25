@@ -1,10 +1,8 @@
-﻿using System;
-using Gateways.NET.CoreViewModels;
-using Gateways.NET.ViewModels; 
+﻿using Gateways.NET.SDK.Contracts;
 
 namespace Gateways.NET.SDK
 {
-    public class PeripheralsController
+    public class PeripheralsController : IBackendFolder
     {
         private readonly GatewaysSDK _sdk;
 
@@ -12,5 +10,7 @@ namespace Gateways.NET.SDK
         {
             _sdk = sdk;
         }
+
+        public string FolderName => "Peripherals";
     }
 }
