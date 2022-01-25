@@ -37,7 +37,7 @@ namespace Gateways.NET.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ApiResponse<FullGatewayViewModel>> AddGateway(GatewayViewModel model)
+        public async Task<ApiResponse<FullGatewayViewModel>> AddGateway([FromBody]GatewayViewModel model)
         {
             try
             {

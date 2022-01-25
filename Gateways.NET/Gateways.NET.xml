@@ -1,0 +1,821 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gateways.NET</name>
+    </assembly>
+    <members>
+        <member name="T:Gateways.NET.Contracts.BaseEntity`1">
+            <summary>
+            Base entity
+            </summary>
+            <typeparam name="TKey">Generic primary key type</typeparam>
+        </member>
+        <member name="P:Gateways.NET.Contracts.BaseEntity`1.Id">
+            <summary>
+            Entity identifier.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Contracts.BaseEntity`1.IsDeleted">
+            <summary>
+            Indicates whether this entity has been deleted
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Contracts.ICommand">
+            <summary>
+            General command interface
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Contracts.ICommandExtenssion">
+            <summary>
+            ICommand extension methods
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.OkResponse``1(Gateways.NET.Contracts.ICommand,``0)">
+            <summary>
+            Generates an OK response using command data
+            </summary>
+            <typeparam name="TObject"></typeparam>
+            <param name="command"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.ErrorResponse(Gateways.NET.Contracts.ICommand,System.String,System.Net.HttpStatusCode)">
+            <summary>
+            Generates an Error response using command data and an error message
+            </summary>
+            <param name="command"></param>
+            <param name="error"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.NotFoundResponse(Gateways.NET.Contracts.ICommand,System.String)">
+            <summary>
+            Generate a Not Found request response using command data and an error message
+            </summary>
+            <param name="command"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.BadResponse(Gateways.NET.Contracts.ICommand,System.String)">
+            <summary>
+            Generates a BadRequest response using command data and an error message
+            </summary>
+            <param name="command"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.BadResponse(Gateways.NET.Contracts.ICommand,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generates a BadRequest response using command data and a list of errors messages
+            </summary>        
+            <param name="command"></param>
+            <param name="errors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.RedirectResponse(Gateways.NET.Contracts.ICommand,System.String,System.Net.HttpStatusCode)">
+            <summary>
+            Generates a redirect response using command data.
+            </summary>
+            <param name="command"></param>
+            <param name="url"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandExtenssion.Response``1(Gateways.NET.Contracts.ICommand,System.Net.HttpStatusCode,``0,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generates a generic response using command data.
+            </summary>
+            <typeparam name="TObject"></typeparam>
+            <param name="command"></param>
+            <param name="code"></param>
+            <param name="body"></param>
+            <param name="errors"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.Contracts.ICommandDispatcher">
+            <summary>
+            General command dispatcher contract
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandDispatcher.DispatchAsync(Gateways.NET.Contracts.ICommand)">
+            <summary>
+            Dispatches a command
+            </summary>
+            <param name="command">Command</param>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.Contracts.ICommandHandler">
+            <summary>
+            General command handler contract
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Contracts.ICommandHandler`1">
+            <summary>
+            Generic command handler contract
+            </summary>
+            <typeparam name="TCommand">Command generic type</typeparam>
+        </member>
+        <member name="M:Gateways.NET.Contracts.ICommandHandler`1.HandleAsync(`0)">
+            <summary>
+            Handles the given command
+            </summary>
+            <param name="command">Command with data needed to handle operation.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.Contracts.ICommandResponse">
+            <summary>
+            Commad response base contract 
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Contracts.ICommandResponse.Code">
+            <summary>
+            Http code associate with response.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Contracts.ICommandResponse.Success">
+            <summary>
+            Indicate if the answer is satisfactory.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Contracts.ICommandResponse.IsRedirect">
+            <summary>
+            Indicates if should redirect
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Contracts.ICommandResponse.Errors">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Contracts.IQueryService">
+            <summary>
+            Basic query service interface
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Contracts.IQueryService`1">
+            <summary>
+            Generic query service interface
+            </summary>
+            <typeparam name="T">Generic entity type</typeparam>
+        </member>
+        <member name="T:Gateways.NET.Contracts.IUnitOfWork">
+            <summary>
+            General unit of work interface
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Contracts.IUnitOfWork.SaveChanges">
+            <summary>
+            Saves changes to the underlying context
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Contracts.IUnitOfWork.SaveChangesAsync">
+            <summary>
+            Asynchronously saves changes to the underlying context
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.Controllers.ApiBaseController">
+            <summary>
+            Base Api Controller
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.SetHeaders(Microsoft.AspNetCore.Http.HeaderDictionary,System.String,System.Int32)">
+            <summary>
+            Set response headers
+            </summary>
+            <param name="headers"></param>
+            <param name="contentType"></param>
+            <param name="status"></param>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Respond``1(System.Object,System.Int32,System.Collections.Generic.IEnumerable{Gateways.NET.CoreViewModels.Error},System.String,Microsoft.AspNetCore.Http.HeaderDictionary,Gateways.NET.Contracts.Pagination)">
+            <summary>
+            Create an API Response
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="payload">Respose Data</param>
+            <param name="status">Http Status Code</param>
+            <param name="errors">Error List</param>
+            <param name="contentType">Reponse Content Type</param>
+            <param name="headers">Response Headers <see cref="T:Microsoft.AspNetCore.Http.HeaderDictionary"/></param>
+            <param name="paging">Pagination Info. <see cref="T:Gateways.NET.Contracts.Pagination"/></param>		
+            <returns><see cref="T:Gateways.NET.Contracts.ApiResponse"/></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Respond(System.Int32,System.Collections.Generic.IEnumerable{Gateways.NET.CoreViewModels.Error},System.String,Microsoft.AspNetCore.Http.HeaderDictionary)">
+            <summary>
+            Create an Api Response
+            </summary>
+            <param name="status">Http Status Code</param>
+            <param name="errors">Error List</param>
+            <param name="contentType">Response Content Type</param>
+            <param name="headers">Response Headers <see cref="T:Microsoft.AspNetCore.Http.HeaderDictionary"/></param>
+            <returns><see cref="T:Gateways.NET.Contracts.ApiResponse"/></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.PaginatedResponse``1(Gateways.NET.ViewModels.PaginatedList{``0})">
+            <summary>
+            Returns a Generic Paginated Response.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <summary>
+            Return an Error response from an error messages collection.
+            </summary>
+            <param name="errors"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error(System.String,System.Int32)">
+            <summary>
+            Return an Error response from an error message.
+            </summary>
+            <param name="error"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error``1(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <summary>
+            Return a Generic Error response from an error messages collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="errors"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error``1(System.Collections.Generic.IEnumerable{Gateways.NET.CoreViewModels.Error},System.Int32)">
+            <summary>
+            Return a Generic Error response from an Error collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="errors"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.ApiBaseController.Error``1(System.String,System.Int32)">
+            <summary>
+            Return a Generic Error response from an error message
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="error"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.AddGateway(Gateways.NET.CoreViewModels.GatewayViewModel)">
+            <summary>
+            Add a new Gateway
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.DeleteGateway(System.Int32)">
+            <summary>
+            Deletes a Gateway
+            </summary>
+            <param name="id">ID of the Gateway</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.UpdateGateway(Gateways.NET.CoreViewModels.GatewayViewModel,System.Int32)">
+            <summary>
+            Updates a Gateway properties
+            </summary>
+            <param name="model">Gateway model</param>
+            /// <param name="id">Gateway ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.AddPeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel,System.Int32)">
+            <summary>
+            Add a new Peripheral device and attaches it to the Gateway
+            </summary>
+            <param name="model">Peripheral device model</param>
+            /// <param name="id">Gateway ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.GetAll(Gateways.NET.Contracts.Pagination)">
+            <summary>
+            Get the list of existing gateways and their associated peripheral devices.
+            </summary>
+            <returns>List of Billers</returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.GetPeripherals(System.Int32)">
+            <summary>
+            Get the list of associated peripheral devices of a Gateway.
+            </summary>
+            <returns>List of Billers</returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.GatewaysController.GetGateway(System.Int32)">
+            <summary>
+            Get a Gateway properties and the list of associated peripheral devices.
+            </summary>
+            <returns>List of Billers</returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.AddPeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel)">
+            <summary>
+            Add a new Peripheral device
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.DeletePeripheral(System.Int32)">
+            <summary>
+            Deletes a Peripheral device
+            </summary>
+            <param name="id">ID of the Peripheral device</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.UpdatePeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel,System.Int32)">
+            <summary>
+            Updates a Peripheral device properties
+            </summary>
+            <param name="model">Peripheral device model</param>
+            <param name="id">ID of the Peripheral device</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.AttachPeripheral(Gateways.NET.ViewModels.AttachPeripheralViewModel,System.Int32)">
+            <summary>
+            Attaches a Peripheral device to a Gateway
+            </summary>
+            <param name="model">Peripheral device Attach model</param>
+            /// <param name="id">ID of the Peripheral device</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.DetachPeripheral(System.Int32)">
+            <summary>
+            Detaches a Peripheral device from it's currently associated Gateway
+            </summary>
+            <param name="id">ID of the Peripheral device</param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.UpdatePeripheralStatus(Gateways.NET.CoreViewModels.PeripheralStatusViewModel,System.Int32)">
+            <summary>
+            Updates a Peripheral device status (ON/OFF)
+            </summary>
+            <param name="model">Peripheral device model</param>
+            /// <param name="id">ID of the Peripheral device</param>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.ViewModels.BaseQueryService`1">
+            <summary>
+            Generic base class of query services over entities
+            </summary>
+            <typeparam name="TEntity">Generic entity type</typeparam>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.BaseQueryService`1.PaginationSearch(Gateways.NET.Contracts.PaginationViewModel,System.Collections.Generic.IEnumerable{Gateways.NET.ViewModels.OrderColumn},System.String[],System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}[])">
+            <summary>
+            Search with pagination and ordering support
+            </summary>
+            <param name="pagination"></param>
+            <param name="orders"></param>
+            <param name="includes"></param>
+            <param name="criterias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.BaseQueryService`1.Search(System.Collections.Generic.IEnumerable{Gateways.NET.ViewModels.OrderColumn},System.String[],System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}[])">
+            <summary>
+            Search and ordering support
+            </summary>
+            <param name="orders"></param>
+            <param name="includes"></param>
+            <param name="criterias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.CommandDispatcher.DispatchAsync(Gateways.NET.Contracts.ICommand)">
+            <summary>
+            Dispatches the command
+            </summary>
+            <param name="command">Command</param>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.ViewModels.CommandResponse`1">
+            <summary>
+            Basic command response implementation
+            </summary>
+            <typeparam name="TBody">Generic type of the response body</typeparam>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Body">
+            <summary>
+            Generic response body
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Code">
+            <summary>
+            Http code associate with response.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Success">
+            <summary>
+            Indicates wheter the response is successful
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.IsRedirect">
+            <summary>
+            Indicates wheter the response is a redirect
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.CommandResponse`1.Errors">
+            <summary>
+            Error messages
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.ViewModels.OrderColumn">
+            <summary>
+            Order Column
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.OrderColumn.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.OrderColumn.Ascendant">
+            <summary>
+            Ascendant
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.ViewModels.PaginatedList`1">
+            <summary>
+            Paginated List
+            </summary>
+            <typeparam name="T">Generic Type</typeparam>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.PaginatedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Return a Paginated Response
+            </summary>
+            <param name="items"></param>
+            <param name="total"></param>
+            <param name="pageSize"></param>
+            <param name="current"></param>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.PaginatedList`1.Total">
+            <summary>
+            Total
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.ViewModels.PaginatedList`1.Paging">
+            <summary>
+            Paging
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.ApplyPagging``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            Apply pagination pattern to a queryable source
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.ApplyOrder``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{Gateways.NET.ViewModels.OrderColumn})">
+            <summary>
+            Apply a sort order to a queryable source
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="orders"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.ApplyFilters``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}})">
+            <summary>
+            Apply filters to a queryable source
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="criterias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.ViewModels.QueryHelper.BuildExpression``1(System.String)">
+            <summary>
+            Builds a generic expression from a property name
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="propName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.AttachPeripheralCommand">
+            <summary>
+            Command for attach a peripheral device to a gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.AttachPeripheralCommand.GatewayId">
+            <summary>
+            ID of the Gateway to attach the Peripheral device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.AttachPeripheralCommand.PeripheralId">
+            <summary>
+            ID of the peripheral device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.GatewayCommandBase.SerialNumber">
+            <summary>
+            Serial number of the Gateway (unique)
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.GatewayCommandBase.Name">
+            <summary>
+            Name of the Gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.GatewayCommandBase.IpAddress">
+            <summary>
+            IPv4 address of the Gateway
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.CreateGatewayCommand">
+            <summary>
+            Command for create a Gateway
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.UpdateGatewayCommand">
+            <summary>
+            Command for update a Gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.UpdateGatewayCommand.Id">
+            <summary>
+            ID of the Gateway
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.PeripheralCommandBase">
+            <summary>
+            Base class for create/update Peripheral devices
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.PeripheralCommandBase.UID">
+            <summary>
+            User ID of the device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.PeripheralCommandBase.Vendor">
+            <summary>
+            Vendor name
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.PeripheralCommandBase.Status">
+            <summary>
+            Status (Online = true / Offline = false)
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.CreatePeripheralCommand">
+            <summary>
+            Command for create a Peripheral device
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.UpdatePeripheralCommand">
+            <summary>
+            Command for update a Peripheral device
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.AddPeripheralToGatewayCommand">
+            <summary>
+            Command for create a Peripheral device directly attached to a Gateway
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.DeleteGatewayCommand">
+            <summary>
+            Command for delete a Gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.DeleteGatewayCommand.Id">
+            <summary>
+            ID of the Gateway
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.DeletePeripheralCommand">
+            <summary>
+            Command for delete a Peripheral device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.DeletePeripheralCommand.Id">
+            <summary>
+            Peripheral device ID
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.DetachPeripheralCommand">
+            <summary>
+            Command for detach a Peripheral device from it's associated Gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.DetachPeripheralCommand.Id">
+            <summary>
+            ID of the peripheral device
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Domain.Commands.SetPeripheralStatusCommand">
+            <summary>
+            Command for set a Peripheral device status ON/OFF
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.SetPeripheralStatusCommand.PeripheralId">
+            <summary>
+            Peripheral device ID
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Domain.Commands.SetPeripheralStatusCommand.Status">
+            <summary>
+            Status of the Peripheral device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Gateway.SerialNumber">
+            <summary>
+            Serial number of the Gateway (unique)
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Gateway.Name">
+            <summary>
+            Name of the Gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Gateway.IpAddress">
+            <summary>
+            IPv4 address of the Gateway
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Gateway.Peripherals">
+            <summary>
+            Associated peripheral devices
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Models.Peripheral">
+            <summary>
+            Peripheral device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Peripheral.UID">
+            <summary>
+            User ID of the device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Peripheral.Vendor">
+            <summary>
+            Vendor name
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Peripheral.CreationDate">
+            <summary>
+            Creation date of the device
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Peripheral.Status">
+            <summary>
+            Status (Online = true / Offline = false)
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Peripheral.GatewayId">
+            <summary>
+            Related Gateway ID
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Models.Peripheral.Gateway">
+            <summary>
+            Related Gateway
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.Error_FullGateway">
+            <summary>
+              Looks up a localized string similar to The Gateway is full. Only {0} peripheral devices allowed.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.Error_General">
+            <summary>
+              Looks up a localized string similar to Something went wrong please try again in a few minutes. If the problem persists contact technical support.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_GatewayNotFound">
+            <summary>
+              Looks up a localized string similar to Gateway not found.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_GatewayOrPeripheralNotFound">
+            <summary>
+              Looks up a localized string similar to Either Gateway or Peripheral device not found.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_GatewaySerialNumberAlreadyExist">
+            <summary>
+              Looks up a localized string similar to The Serial Number already exists in the database.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_PeripheralNotFound">
+            <summary>
+              Looks up a localized string similar to Peripheral device not found.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_PeripheralUIDAlreadyExist">
+            <summary>
+              Looks up a localized string similar to The UID already exists in the database.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_PropertyRequired">
+            <summary>
+              Looks up a localized string similar to The {PropertyName} is required.
+            </summary>
+        </member>
+        <member name="P:Gateways.NET.Properties.Resources.ValidationError_WrongIPv4Address">
+            <summary>
+              Looks up a localized string similar to The IPv4 address is invalid.
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Repository.Infraestructure.Configuration.GatewayEntityTypeConfiguration">
+            <summary>
+            Configuration of the Gateway entity
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Repository.Infraestructure.Configuration.PeripheralEntityTypeConfiguration">
+            <summary>
+            Configuration of the Peripheral entity
+            </summary>
+        </member>
+        <member name="T:Gateways.NET.Repository.Infraestructure.GatewaysDbContext">
+            <summary>
+            Gateways.NET Database context
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Repository.Infraestructure.GatewaysDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Register DataBase Configuration Dyamically
+            </summary>
+            <param name="modelBuilder">Model builder</param>
+        </member>
+        <member name="T:Gateways.NET.Repository.Infraestructure.Repository`1">
+            <summary>
+            Entity Repository
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Gateways.NET.Repository.Infraestructure.Repository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dbContext">Db Context</param>
+        </member>
+        <member name="T:Gateways.NET.Repository.Infraestructure.UnitOfWork">
+            <summary>
+            Base class of a Unit of Work implementation
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Repository.Infraestructure.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="context">Associated DbContext</param>
+        </member>
+        <member name="M:Gateways.NET.Repository.Infraestructure.UnitOfWork.SaveChanges">
+            <summary>
+            Saves changes to the underlying context
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.Repository.Infraestructure.UnitOfWork.SaveChangesAsync">
+            <summary>
+            Asynchronously saves changes to the underlying context
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Repository.Infraestructure.UnitOfWork.Dispose">
+            <summary>
+            Implementation of the Disposable pattern.
+            </summary>
+        </member>
+        <member name="M:Gateways.NET.ServicesCollectionExtensions.RegisterUnitOfWork(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.Boolean)">
+            <summary>
+            Register UnitOfWork and DbContext to DI
+            </summary>
+            <param name="services"></param>
+            <param name="ConnectionString"></param>
+            <param name="sensitiveDataLogging"></param>
+        </member>
+        <member name="M:Gateways.NET.ServicesCollectionExtensions.RegisterRepositories(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register Repositories to DI
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Gateways.NET.ServicesCollectionExtensions.AddCommands(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add Command Handlers and Validators to DI
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Gateways.NET.ServicesCollectionExtensions.AddQueryServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">
+            <summary>
+            Add query services to DI
+            </summary>
+            <param name="services"></param>
+            <param name="others"></param>
+        </member>
+    </members>
+</doc>
