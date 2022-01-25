@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.NET", "Gateways.NET.csproj", "{D7B28FE1-82FA-47B7-9F19-78560155F863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.NET", "Gateways.NET\Gateways.NET.csproj", "{A10F1FE7-D109-4731-B69D-D0B7E0AE775B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.NET.SDK", "Gateways.NET.SDK\Gateways.NET.SDK.csproj", "{DBFD53BE-87F0-4A93-BC25-55E760E9E9DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.NET.Core", "Gateways.NET.ViewModels\Gateways.NET.Core.csproj", "{849783FC-AB23-478B-9F8F-C3A11D109981}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7B28FE1-82FA-47B7-9F19-78560155F863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7B28FE1-82FA-47B7-9F19-78560155F863}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7B28FE1-82FA-47B7-9F19-78560155F863}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7B28FE1-82FA-47B7-9F19-78560155F863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10F1FE7-D109-4731-B69D-D0B7E0AE775B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10F1FE7-D109-4731-B69D-D0B7E0AE775B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10F1FE7-D109-4731-B69D-D0B7E0AE775B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10F1FE7-D109-4731-B69D-D0B7E0AE775B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFD53BE-87F0-4A93-BC25-55E760E9E9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFD53BE-87F0-4A93-BC25-55E760E9E9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFD53BE-87F0-4A93-BC25-55E760E9E9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFD53BE-87F0-4A93-BC25-55E760E9E9DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849783FC-AB23-478B-9F8F-C3A11D109981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849783FC-AB23-478B-9F8F-C3A11D109981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849783FC-AB23-478B-9F8F-C3A11D109981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849783FC-AB23-478B-9F8F-C3A11D109981}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
