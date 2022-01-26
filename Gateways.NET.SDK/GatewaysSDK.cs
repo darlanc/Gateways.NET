@@ -13,6 +13,7 @@ namespace Gateways.NET.SDK
             _config = config;
             _backend = new ExtensibleBackendClient(config, null);
             Gateways = new GatewaysController(this);
+            Peripherals = new PeripheralsController(this);
         }
 
         protected internal ExtensibleBackendClient Backend => _backend;

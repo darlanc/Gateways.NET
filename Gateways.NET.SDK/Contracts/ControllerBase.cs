@@ -13,7 +13,7 @@ namespace Gateways.NET.SDK.Contracts
             if (!apiResponse.IsSuccess())
             {
                 var error = apiResponse.Errors.FirstOrDefault();
-                throw new ApiException(error.Message, error.Code);
+                throw new ApiException(error.Message, apiResponse.Status);
             }
             return apiResponse.Payload;
         }
