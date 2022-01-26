@@ -4,12 +4,12 @@ namespace Gateways.NET.SDK.Contracts
 {
     public class ApiException : Exception
     {
-        public ApiException(string message, string code)
+        public ApiException(string message, int code)
             :base(message)
         {
             Code = code;
         }
 
-        public string Code { get; protected set; }        
+        public int Code { get; protected set; }        
     }
 }
