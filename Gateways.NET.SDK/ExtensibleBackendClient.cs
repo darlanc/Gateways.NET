@@ -71,7 +71,7 @@ namespace Gateways.NET.SDK
             }
 
             return await GetContent<T>(responseMessage);
-        }
+        }        
 
         protected virtual async Task<T> Request<T>(Method method, string endpoint)
         {

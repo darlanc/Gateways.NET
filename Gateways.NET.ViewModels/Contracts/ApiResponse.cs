@@ -1,5 +1,4 @@
-﻿using Gateways.NET.ViewModels;
-using Gateways.NET.CoreViewModels;
+﻿using Gateways.NET.CoreViewModels;
 using System.Collections.Generic;
 
 namespace Gateways.NET.Contracts

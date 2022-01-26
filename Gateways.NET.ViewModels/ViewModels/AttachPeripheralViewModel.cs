@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gateways.NET.ViewModels
+namespace Gateways.NET.CoreViewModels
 {
     public class AttachPeripheralViewModel
     {
