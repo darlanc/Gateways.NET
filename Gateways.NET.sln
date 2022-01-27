@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.NET.SDK", "Gateway
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.NET.Core", "Gateways.NET.ViewModels\Gateways.NET.Core.csproj", "{849783FC-AB23-478B-9F8F-C3A11D109981}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.NET.Tests", "Gateways.NET.Tests\Gateways.NET.Tests.csproj", "{4872C260-3B2D-419F-91EC-F71E6671E95C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{849783FC-AB23-478B-9F8F-C3A11D109981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{849783FC-AB23-478B-9F8F-C3A11D109981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{849783FC-AB23-478B-9F8F-C3A11D109981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4872C260-3B2D-419F-91EC-F71E6671E95C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4872C260-3B2D-419F-91EC-F71E6671E95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4872C260-3B2D-419F-91EC-F71E6671E95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4872C260-3B2D-419F-91EC-F71E6671E95C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
