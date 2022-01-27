@@ -16,13 +16,14 @@ namespace Gateways.NET.Tests
 
         #region [ Support Methods ]
 
-        protected int innerCount = 0;
+        protected uint gatewaysInnerCount = 0;
+        protected uint peripheralsInnerCount = 0;
 
         protected string GetSerialNumber(int consecutive = 0)
         {
             var date = DateTime.Now;
-            innerCount++;
-            return $"{date.Year}{date.Month}{date.Day}-{date.Hour}{date.Minute}{date.Second}-{(innerCount + consecutive):n4}";
+            gatewaysInnerCount++;
+            return $"{date.Year}{date.Month}{date.Day}-{date.Hour}{date.Minute}{date.Second}-{(gatewaysInnerCount + consecutive):n4}";
         }
 
         protected string GetRandomIpv4()
@@ -36,7 +37,8 @@ namespace Gateways.NET.Tests
             var date = DateTime.Now;
             var startDate = new DateTime(2022, 1, 26);
             var ticks = date.Ticks - startDate.Ticks;
-            return (uint)ticks + consecutive;
+            peripheralsInnerCount++;
+            return (uint)ticks + consecutive + peripheralsInnerCount;
         }
 
         public void AssertAreEquals(PeripheralViewModel source, PeripheralViewModel target)
@@ -80,7 +82,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(1),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test single Gateway"
             };
@@ -97,7 +99,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(10),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test unique Gateway"
             };
@@ -125,7 +127,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(1),
+                SerialNumber = GetSerialNumber(2),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test update Gateway"
             };
@@ -143,11 +145,11 @@ namespace Gateways.NET.Tests
         #region [ Add new peripheral ]
 
         [TestMethod]
-        public async Task CheckAddSingleNewPripheralToGateway()
+        public async Task CheckAddSingleNewPeripheralToGateway()
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(3),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test single peripheral Gateway"
             };
@@ -178,7 +180,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(4),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test full Gateway"
             };
@@ -218,6 +220,90 @@ namespace Gateways.NET.Tests
                 Assert.IsTrue(ex.Code == (int)HttpStatusCode.BadRequest);
             }
         }
+
+        #endregion
+
+        #endregion
+
+        #region < Peripherals Test Methods >
+
+        #region [ Add Peripheral ]
+
+        [TestMethod]
+        public async Task AddUpdateNewPeripheral()
+        {
+            var model = new PeripheralViewModel
+            {
+                UID = GetUID(1),
+                Vendor = "Musala Soft",
+                Status = true
+            };
+
+            var result = await sdk.Peripherals.AddPeripheral(model);
+            AssertAreEquals(model, result);
+
+            model.Vendor = "Darlanc Corp.";
+            var updatedResult = await sdk.Peripherals.UpdatePeripheral(result.Id, model);
+            AssertAreEquals(model, updatedResult);
+        }
+
+        [TestMethod]
+        public async Task CheckAttachDetachPeripheral()
+        {
+            var gatewayModel = new GatewayViewModel
+            {
+                SerialNumber = GetSerialNumber(5),
+                IpAddress = GetRandomIpv4(),
+                Name = "Attach/detach peripheral Gateway"
+            };
+
+            var peripheralModel = new PeripheralViewModel
+            {
+                UID = GetUID(2),
+                Vendor = "Musala Soft",
+                Status = true
+            };
+
+            var gateway = await sdk.Gateways.AddGateway(gatewayModel);
+            var peripheral = await sdk.Peripherals.AddPeripheral(peripheralModel);
+
+            await sdk.Peripherals.AttachPeripheral(peripheral.Id, new AttachPeripheralViewModel { GatewayId = gateway.Id });
+
+            var updatedGateway = await sdk.Gateways.GetGateaway(gateway.Id);
+            Assert.IsTrue(updatedGateway.Peripherals.Length == 1);
+            AssertAreEquals(peripheral, updatedGateway.Peripherals[0]);
+
+            await sdk.Peripherals.DetachPeripheral(peripheral.Id);
+            updatedGateway = await sdk.Gateways.GetGateaway(gateway.Id);
+            Assert.IsTrue(updatedGateway.Peripherals.Length == 0);
+        }
+
+        [TestMethod]
+        public async Task CheckChangePeripheralStatus()
+        {
+            var gatewayModel = new GatewayViewModel
+            {
+                SerialNumber = GetSerialNumber(),
+                IpAddress = GetRandomIpv4(),
+                Name = "On/Off peripheral Gateway"
+            };
+
+            var peripheralModel = new PeripheralViewModel
+            {
+                UID = GetUID(3),
+                Vendor = "Musala Soft",
+                Status = true
+            };
+
+            var gateway = await sdk.Gateways.AddGateway(gatewayModel);
+            var peripheral = await sdk.Peripherals.AddPeripheral(peripheralModel);
+            await sdk.Peripherals.AttachPeripheral(peripheral.Id, new AttachPeripheralViewModel { GatewayId = gateway.Id });
+
+            await sdk.Peripherals.UpdatePeripheralStatus(peripheral.Id, new PeripheralStatusViewModel { Status = false });
+            var updatedGateway = await sdk.Gateways.GetGateaway(gateway.Id);
+            Assert.IsFalse(updatedGateway.Peripherals[0].Status);
+        }
+
 
         #endregion
 

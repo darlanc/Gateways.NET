@@ -13,7 +13,6 @@ namespace Gateways.NET.Domain.Validators
         {
             RuleFor(b => b.UID)
                 .NotEmpty().WithMessage(Resources.ValidationError_PropertyRequired);            
-            RuleFor(p => p).IsUnique(repository).WithMessage(Resources.ValidationError_PeripheralUIDAlreadyExist);
         }
     }
 
@@ -22,6 +21,7 @@ namespace Gateways.NET.Domain.Validators
         public CreatePeripheralValidator(IRepository<Peripheral> repository)
             : base(repository)
         {
+            RuleFor(p => p).IsUnique(repository).WithMessage(Resources.ValidationError_PeripheralUIDAlreadyExist);
         }
     }
 
