@@ -16,13 +16,14 @@ namespace Gateways.NET.Tests
 
         #region [ Support Methods ]
 
-        protected int innerCount = 0;
+        protected uint gatewaysInnerCount = 0;
+        protected uint peripheralsInnerCount = 0;
 
         protected string GetSerialNumber(int consecutive = 0)
         {
             var date = DateTime.Now;
-            innerCount++;
-            return $"{date.Year}{date.Month}{date.Day}-{date.Hour}{date.Minute}{date.Second}-{(innerCount + consecutive):n4}";
+            gatewaysInnerCount++;
+            return $"{date.Year}{date.Month}{date.Day}-{date.Hour}{date.Minute}{date.Second}-{(gatewaysInnerCount + consecutive):n4}";
         }
 
         protected string GetRandomIpv4()
@@ -36,7 +37,8 @@ namespace Gateways.NET.Tests
             var date = DateTime.Now;
             var startDate = new DateTime(2022, 1, 26);
             var ticks = date.Ticks - startDate.Ticks;
-            return (uint)ticks + consecutive;
+            peripheralsInnerCount++;
+            return (uint)ticks + consecutive + peripheralsInnerCount;
         }
 
         public void AssertAreEquals(PeripheralViewModel source, PeripheralViewModel target)
@@ -80,7 +82,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(1),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test single Gateway"
             };
@@ -97,7 +99,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(10),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test unique Gateway"
             };
@@ -125,7 +127,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(1),
+                SerialNumber = GetSerialNumber(2),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test update Gateway"
             };
@@ -147,7 +149,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(3),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test single peripheral Gateway"
             };
@@ -178,7 +180,7 @@ namespace Gateways.NET.Tests
         {
             var model = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(4),
                 IpAddress = GetRandomIpv4(),
                 Name = "Test full Gateway"
             };
@@ -232,7 +234,7 @@ namespace Gateways.NET.Tests
         {
             var model = new PeripheralViewModel
             {
-                UID = GetUID(),
+                UID = GetUID(1),
                 Vendor = "Musala Soft",
                 Status = true
             };
@@ -250,14 +252,14 @@ namespace Gateways.NET.Tests
         {
             var gatewayModel = new GatewayViewModel
             {
-                SerialNumber = GetSerialNumber(),
+                SerialNumber = GetSerialNumber(5),
                 IpAddress = GetRandomIpv4(),
                 Name = "Attach/detach peripheral Gateway"
             };
 
             var peripheralModel = new PeripheralViewModel
             {
-                UID = GetUID(),
+                UID = GetUID(2),
                 Vendor = "Musala Soft",
                 Status = true
             };
@@ -288,7 +290,7 @@ namespace Gateways.NET.Tests
 
             var peripheralModel = new PeripheralViewModel
             {
-                UID = GetUID(),
+                UID = GetUID(3),
                 Vendor = "Musala Soft",
                 Status = true
             };
