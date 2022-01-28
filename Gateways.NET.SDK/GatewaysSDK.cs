@@ -4,22 +4,20 @@ namespace Gateways.NET.SDK
 {
     public class GatewaysSDK
     {
-        private readonly ApiConfiguration _config;
-        private readonly ExtensibleBackendClient _backend;
-        private readonly GatewaysController _gateways;
-
         public GatewaysSDK(ApiConfiguration config)
         {
-            _config = config;
-            _backend = new ExtensibleBackendClient(config, null);
+            Config = config;
+            Backend = new ExtensibleBackendClient(config, null);
             Gateways = new GatewaysController(this);
             Peripherals = new PeripheralsController(this);
         }
 
-        protected internal ExtensibleBackendClient Backend => _backend;
+        protected internal ExtensibleBackendClient Backend { get; protected set; }
 
-        public virtual GatewaysController Gateways {get; protected set;}
+        public virtual GatewaysController Gateways { get; protected set; }
 
         public virtual PeripheralsController Peripherals { get; protected set; }
+
+        public virtual ApiConfiguration Config { get; protected set; }
     }
 }

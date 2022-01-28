@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Gateways.NET.SDK.Contracts;
+using Microsoft.Extensions.Logging;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -54,23 +56,31 @@ namespace Gateways.NET.SDK
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             var url = new Uri(BaseAddress, endpoint);
 
-            HttpResponseMessage responseMessage;
-            switch (method)
+            try
             {
-                case Method.POST:
-                    responseMessage = await client.PostAsync(url, content);
-                    break;
-                case Method.PUT:
-                    responseMessage = await client.PutAsync(url, content);
-                    break;
-                case Method.PATCH:
-                    responseMessage = await client.PatchAsync(url, content);
-                    break;
-                default:
-                    throw new Exception("Unsupported Http method for this request");
-            }
+                HttpResponseMessage responseMessage;
+                switch (method)
+                {
+                    case Method.POST:
+                        responseMessage = await client.PostAsync(url, content);
+                        break;
+                    case Method.PUT:
+                        responseMessage = await client.PutAsync(url, content);
+                        break;
+                    case Method.PATCH:
+                        responseMessage = await client.PatchAsync(url, content);
+                        break;
+                    default:
+                        throw new ApiException("Unsupported Http method for this request", (int)HttpStatusCode.MethodNotAllowed);
+                }
 
-            return await GetContent<T>(responseMessage);
+                return await GetContent<T>(responseMessage);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex, ex.Message);
+                throw new ApiException("Service Unavailable", (int)HttpStatusCode.ServiceUnavailable);
+            }
         }        
 
         protected virtual async Task<T> Request<T>(Method method, string endpoint)
@@ -78,21 +88,29 @@ namespace Gateways.NET.SDK
             var client = GetClient();
             var url = new Uri(BaseAddress, endpoint);
 
-            HttpResponseMessage responseMessage = null;
-
-            switch (method)
+            try
             {
-                case Method.GET:
-                    responseMessage = await client.GetAsync(url);
-                    break;
-                case Method.DELETE:
-                    responseMessage = await client.DeleteAsync(url);
-                    break;
-                default:
-                    throw new Exception("Unsupported Http method for this request");
-            }
+                HttpResponseMessage responseMessage = null;
 
-            return await GetContent<T>(responseMessage);
+                switch (method)
+                {
+                    case Method.GET:
+                        responseMessage = await client.GetAsync(url);
+                        break;
+                    case Method.DELETE:
+                        responseMessage = await client.DeleteAsync(url);
+                        break;
+                    default:
+                        throw new ApiException("Unsupported Http method for this request", (int)HttpStatusCode.MethodNotAllowed);
+                }
+
+                return await GetContent<T>(responseMessage);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex, ex.Message);
+                throw new ApiException("Service Unavailable", (int)HttpStatusCode.ServiceUnavailable);
+            }
         }
 
         protected virtual async Task<T> GetContent<T>(HttpResponseMessage message)
