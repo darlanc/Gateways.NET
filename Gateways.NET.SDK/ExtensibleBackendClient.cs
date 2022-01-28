@@ -147,7 +147,22 @@ namespace Gateways.NET.SDK
         public virtual async Task<T> Delete<T>(string endpoint)
         {
             return await Request<T>(Method.DELETE, endpoint);
-        } 
+        }
+        
+        public virtual async Task<HttpStatusCode> GetStatusCode(string endpoint)
+        {
+            try
+            {
+                var client = GetClient();
+                var url = new Uri(BaseAddress, endpoint);
+                var responseMessage = await client.GetAsync(url);
+                return responseMessage.StatusCode;
+            }
+            catch (Exception)
+            {
+                return HttpStatusCode.ServiceUnavailable;
+            }
+        }
 
         #endregion
     }

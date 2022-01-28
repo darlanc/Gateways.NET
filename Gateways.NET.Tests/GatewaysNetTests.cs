@@ -41,12 +41,29 @@ namespace Gateways.NET.Tests
             return (uint)ticks + consecutive + peripheralsInnerCount;
         }
 
-        public void AssertAreEquals(PeripheralViewModel source, PeripheralViewModel target)
+        protected void AssertAreEquals(PeripheralViewModel source, PeripheralViewModel target)
         {
             Assert.AreEqual(source.UID, target.UID);
             Assert.AreEqual(source.Vendor, target.Vendor);
             Assert.AreEqual(source.Status, target.Status);
         }
+
+        protected async Task<bool> IsServiceAvalable()
+        {
+            return await sdk.IsServiceAvailable();
+        }
+
+        #endregion
+
+        #region [ Check Service Availability ]
+
+        //TODO: Uncomment this test to check system availability when online
+        //[TestMethod]
+        //public async Task CheckSystemAvailability()
+        //{
+        //    var result = await IsServiceAvalable();
+        //    Assert.IsTrue(result);
+        //}
 
         #endregion
 
@@ -57,6 +74,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task CheckGatewaysIpv4AddressValidation()
         {
+            if (!await IsServiceAvalable())
+                return;
             try
             {
                 var model = new GatewayViewModel
@@ -80,6 +99,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task AddNewGateway()
         {
+            if (!await IsServiceAvalable())
+                return;
             var model = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(1),
@@ -97,6 +118,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task CheckUniqueSerialNumberInGateways()
         {
+            if (!await IsServiceAvalable())
+                return;
             var model = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(10),
@@ -125,6 +148,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task CheckUpdateGateway()
         {
+            if (!await IsServiceAvalable())
+                return;
             var model = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(2),
@@ -147,6 +172,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task CheckAddSingleNewPeripheralToGateway()
         {
+            if (!await IsServiceAvalable())
+                return;
             var model = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(3),
@@ -178,6 +205,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task CheckPeripheralsLimit()
         {
+            if (!await IsServiceAvalable())
+                return;
             var model = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(4),
@@ -232,6 +261,8 @@ namespace Gateways.NET.Tests
         [TestMethod]
         public async Task AddUpdateNewPeripheral()
         {
+            if (!await IsServiceAvalable())
+                return;
             var model = new PeripheralViewModel
             {
                 UID = GetUID(1),
@@ -247,9 +278,15 @@ namespace Gateways.NET.Tests
             AssertAreEquals(model, updatedResult);
         }
 
+        #endregion
+
+        #region [ Attach & Detach Peripheral ]
+
         [TestMethod]
         public async Task CheckAttachDetachPeripheral()
         {
+            if (!await IsServiceAvalable())
+                return;
             var gatewayModel = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(5),
@@ -278,9 +315,15 @@ namespace Gateways.NET.Tests
             Assert.IsTrue(updatedGateway.Peripherals.Length == 0);
         }
 
+        #endregion
+
+        #region [ Change Peripheral status ]
+
         [TestMethod]
         public async Task CheckChangePeripheralStatus()
         {
+            if (!await IsServiceAvalable())
+                return;
             var gatewayModel = new GatewayViewModel
             {
                 SerialNumber = GetSerialNumber(),

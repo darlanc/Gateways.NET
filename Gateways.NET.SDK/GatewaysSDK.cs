@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Gateways.NET.Contracts;
+using Gateways.NET.SDK.Contracts;
+using System;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Gateways.NET.SDK
 {
@@ -19,5 +23,20 @@ namespace Gateways.NET.SDK
         public virtual PeripheralsController Peripherals { get; protected set; }
 
         public virtual ApiConfiguration Config { get; protected set; }
+
+        public virtual async Task<bool> IsServiceAvailable()
+        {
+            try
+            {
+                var result = await Backend.GetStatusCode("System");
+                return result == HttpStatusCode.NoContent;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.Code == (int)HttpStatusCode.ServiceUnavailable)
+                    return false;
+                throw ex;
+            }
+        }
     }
 }
