@@ -350,6 +350,12 @@
             /// <param name="id">ID of the Peripheral device</param>
             <returns></returns>
         </member>
+        <member name="M:Gateways.NET.Controllers.SystemController.CheckSystemStatus">
+            <summary>
+            Check DB availability.
+            </summary>
+            <returns>204 on success, 503 otherwise</returns>
+        </member>
         <member name="T:Gateways.NET.ViewModels.BaseQueryService`1">
             <summary>
             Generic base class of query services over entities
