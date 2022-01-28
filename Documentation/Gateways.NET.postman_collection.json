@@ -1,0 +1,1749 @@
+{
+	"info": {
+		"_postman_id": "2df1087e-82d9-4266-a5c0-3526d26fdbe7",
+		"name": "Gateways.NET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gateways",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "peripherals",
+							"item": [
+								{
+									"name": "Add a new Peripheral device and attaches it to the Gateway",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"uid\": 431901,\n    \"vendor\": \"Musala Soft\",\n    \"status\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id/peripherals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id",
+												"peripherals"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) Gateway ID"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/Gateways/:id/peripherals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"Gateways",
+														":id",
+														"peripherals"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-96495560",
+															"description": "(Required) Gateway ID"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": {\n  \"id\": 94670204,\n  \"gatewayId\": 2601203,\n  \"creationDate\": \"1967-03-19T00:38:21.839Z\",\n  \"uid\": -33053253,\n  \"vendor\": \"non inci\",\n  \"status\": false\n },\n \"status\": -39620179,\n \"errors\": [\n  {\n   \"code\": \"in ipsum ex\",\n   \"message\": \"reprehenderit enim cillum adipisic\"\n  },\n  {\n   \"code\": \"consectetur\",\n   \"message\": \"id nisi\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/Gateways/:id/peripherals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"Gateways",
+														":id",
+														"peripherals"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-96495560",
+															"description": "(Required) Gateway ID"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/Gateways/:id/peripherals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"Gateways",
+														":id",
+														"peripherals"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-96495560",
+															"description": "(Required) Gateway ID"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Get the list of associated peripheral devices of a Gateway.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id/peripherals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id",
+												"peripherals"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/Gateways/:id/peripherals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"Gateways",
+														":id",
+														"peripherals"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "51144583",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": [\n  {\n   \"id\": 10879357,\n   \"gatewayId\": -34021880,\n   \"creationDate\": \"1977-09-24T15:23:38.212Z\",\n   \"uid\": -70986963,\n   \"vendor\": \"ullamco minim\",\n   \"status\": true\n  },\n  {\n   \"id\": 57658542,\n   \"gatewayId\": -10358425,\n   \"creationDate\": \"1999-06-28T00:47:44.893Z\",\n   \"uid\": -5504080,\n   \"vendor\": \"voluptate reprehenderit lab\",\n   \"status\": true\n  }\n ],\n \"status\": -13275020,\n \"errors\": [\n  {\n   \"code\": \"sint Ut\",\n   \"message\": \"minim\"\n  },\n  {\n   \"code\": \"qui ea\",\n   \"message\": \"aliqua esse sint eiusmod\"\n  }\n ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Deletes a Gateway",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Gateways/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Gateways",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) ID of the Gateway"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-6739126",
+													"description": "(Required) ID of the Gateway"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"status\": -91175209,\n \"errors\": [\n  {\n   \"code\": \"amet irure in velit\",\n   \"message\": \"occaecat\"\n  },\n  {\n   \"code\": \"quis Ut\",\n   \"message\": \"ut labore ess\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-6739126",
+													"description": "(Required) ID of the Gateway"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-6739126",
+													"description": "(Required) ID of the Gateway"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Updates a Gateway properties",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serialNumber\": \"111-110A\",\n    \"name\": \"Postman 01 (updated)\",\n    \"ipAddress\": \"1.1.1.128\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Gateways/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Gateways",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) Gateway ID"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"serialNumber\": \"Lorem \",\n    \"name\": \"culpa veniam Duis sunt\",\n    \"ipAddress\": \"quis\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96495560",
+													"description": "(Required) Gateway ID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"payload\": {\n  \"id\": 65029725,\n  \"peripherals\": [\n   {\n    \"id\": -23365533,\n    \"gatewayId\": 61895934,\n    \"creationDate\": \"1967-11-01T13:26:50.211Z\",\n    \"uid\": -68794417,\n    \"vendor\": \"in esse enim\",\n    \"status\": false\n   },\n   {\n    \"id\": -6166392,\n    \"gatewayId\": -29712088,\n    \"creationDate\": \"1961-01-19T05:13:47.986Z\",\n    \"uid\": 87443258,\n    \"vendor\": \"ipsum\",\n    \"status\": false\n   }\n  ],\n  \"serialNumber\": \"ea ex\",\n  \"name\": \"qui\",\n  \"ipAddress\": \"enim consectetur\"\n },\n \"status\": -89325035,\n \"errors\": [\n  {\n   \"code\": \"anim exercitation\",\n   \"message\": \"dolor\"\n  },\n  {\n   \"code\": \"officia esse Lorem est\",\n   \"message\": \"et\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"serialNumber\": \"Lorem \",\n    \"name\": \"culpa veniam Duis sunt\",\n    \"ipAddress\": \"quis\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96495560",
+													"description": "(Required) Gateway ID"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"serialNumber\": \"Lorem \",\n    \"name\": \"culpa veniam Duis sunt\",\n    \"ipAddress\": \"quis\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96495560",
+													"description": "(Required) Gateway ID"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Get a Gateway properties and the list of associated peripheral devices.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Gateways/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Gateways",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Gateways/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Gateways",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "51144583",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"payload\": {\n  \"id\": 65029725,\n  \"peripherals\": [\n   {\n    \"id\": -23365533,\n    \"gatewayId\": 61895934,\n    \"creationDate\": \"1967-11-01T13:26:50.211Z\",\n    \"uid\": -68794417,\n    \"vendor\": \"in esse enim\",\n    \"status\": false\n   },\n   {\n    \"id\": -6166392,\n    \"gatewayId\": -29712088,\n    \"creationDate\": \"1961-01-19T05:13:47.986Z\",\n    \"uid\": 87443258,\n    \"vendor\": \"ipsum\",\n    \"status\": false\n   }\n  ],\n  \"serialNumber\": \"ea ex\",\n  \"name\": \"qui\",\n  \"ipAddress\": \"enim consectetur\"\n },\n \"status\": -89325035,\n \"errors\": [\n  {\n   \"code\": \"anim exercitation\",\n   \"message\": \"dolor\"\n  },\n  {\n   \"code\": \"officia esse Lorem est\",\n   \"message\": \"et\"\n  }\n ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Add a new Gateway",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serialNumber\": \"111-001\",\n    \"name\": \"Postman 01\",\n    \"ipAddress\": \"1.1.1.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Gateways",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Gateways"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serialNumber\": \"Lorem \",\n    \"name\": \"culpa veniam Duis sunt\",\n    \"ipAddress\": \"quis\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Gateways",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Gateways"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"payload\": {\n  \"id\": 28337108,\n  \"peripherals\": [\n   {\n    \"id\": 94101683,\n    \"gatewayId\": -87433801,\n    \"creationDate\": \"1969-06-09T02:01:27.284Z\",\n    \"uid\": -89077431,\n    \"vendor\": \"in adipisicing nulla occaecat sit\",\n    \"status\": false\n   },\n   {\n    \"id\": 41155259,\n    \"gatewayId\": 95570004,\n    \"creationDate\": \"1959-05-28T11:02:49.069Z\",\n    \"uid\": 27698600,\n    \"vendor\": \"in\",\n    \"status\": true\n   }\n  ],\n  \"serialNumber\": \"ex mollit incididunt nostrud officia\",\n  \"name\": \"a\",\n  \"ipAddress\": \"sed ut pariatur\"\n },\n \"status\": 96959458,\n \"errors\": [\n  {\n   \"code\": \"minim do\",\n   \"message\": \"labore occaecat dolor sit\"\n  },\n  {\n   \"code\": \"id qui nulla mollit\",\n   \"message\": \"sit aliquip anim ex\"\n  }\n ]\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serialNumber\": \"Lorem \",\n    \"name\": \"culpa veniam Duis sunt\",\n    \"ipAddress\": \"quis\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Gateways",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Gateways"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get the list of existing gateways and their associated peripheral devices.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Gateways?Page=1&PageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Gateways"
+							],
+							"query": [
+								{
+									"key": "Page",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Gateways?Page=51144583&PageSize=51144583",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Gateways"
+									],
+									"query": [
+										{
+											"key": "Page",
+											"value": "51144583"
+										},
+										{
+											"key": "PageSize",
+											"value": "51144583"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"payload\": [\n  {\n   \"id\": -47222013,\n   \"peripherals\": [\n    {\n     \"id\": -69575676,\n     \"gatewayId\": -68756316,\n     \"creationDate\": \"1953-10-12T16:33:10.901Z\",\n     \"uid\": -5768164,\n     \"vendor\": \"magna Ut cupidatat\",\n     \"status\": false\n    },\n    {\n     \"id\": -4514740,\n     \"gatewayId\": 50969068,\n     \"creationDate\": \"2008-02-27T05:53:50.548Z\",\n     \"uid\": -28575180,\n     \"vendor\": \"no\",\n     \"status\": false\n    }\n   ],\n   \"serialNumber\": \"cillum\",\n   \"name\": \"fugiat magna\",\n   \"ipAddress\": \"magna dolor dolor\"\n  },\n  {\n   \"id\": -56295767,\n   \"peripherals\": [\n    {\n     \"id\": 36559781,\n     \"gatewayId\": 7715244,\n     \"creationDate\": \"1968-12-17T04:23:26.318Z\",\n     \"uid\": 28393452,\n     \"vendor\": \"exercitation eiusmod\",\n     \"status\": true\n    },\n    {\n     \"id\": 55876515,\n     \"gatewayId\": -33393071,\n     \"creationDate\": \"1963-11-22T14:26:15.140Z\",\n     \"uid\": 93181445,\n     \"vendor\": \"ad eu dolore\",\n     \"status\": false\n    }\n   ],\n   \"serialNumber\": \"ipsum ad reprehenderit velit\",\n   \"name\": \"est proident qui min\",\n   \"ipAddress\": \"cillum nulla velit proident\"\n  }\n ],\n \"status\": 69234044,\n \"errors\": [\n  {\n   \"code\": \"sed occaecat in ex anim\",\n   \"message\": \"voluptate culpa elit in dolore\"\n  },\n  {\n   \"code\": \"consectetur eu quis incididunt\",\n   \"message\": \"consectetur amet pariatur ipsum\"\n  }\n ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Peripherals",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Deletes a Peripheral device",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-98935436",
+											"description": "(Required) ID of the Peripheral device"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"status\": -24946605,\n \"errors\": [\n  {\n   \"code\": \"nostrud nulla nisi ex\",\n   \"message\": \"ea in\"\n  },\n  {\n   \"code\": \"fugiat incididunt id\",\n   \"message\": \"esse in\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Updates a Peripheral device properties",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\": 4319009,\n    \"vendor\": \"Musala Soft (updated)\",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) ID of the Peripheral device"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"payload\": {\n  \"id\": -96749071,\n  \"gatewayId\": -70312472,\n  \"creationDate\": \"1995-10-29T23:13:23.019Z\",\n  \"uid\": -42295629,\n  \"vendor\": \"ut et ex ipsum\",\n  \"status\": false\n },\n \"status\": 30253988,\n \"errors\": [\n  {\n   \"code\": \"est sunt\",\n   \"message\": \"exercitation esse\"\n  },\n  {\n   \"code\": \"deserunt Duis laborum ut\",\n   \"message\": \"non occaecat mollit\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Attaches a Peripheral device to a Gateway",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"gatewayId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals/:id/attach",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals",
+										":id",
+										"attach"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) ID of the Peripheral device"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"gatewayId\": 6246140\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/attach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"attach"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"status\": -24946605,\n \"errors\": [\n  {\n   \"code\": \"nostrud nulla nisi ex\",\n   \"message\": \"ea in\"\n  },\n  {\n   \"code\": \"fugiat incididunt id\",\n   \"message\": \"esse in\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"gatewayId\": 6246140\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/attach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"attach"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"gatewayId\": 6246140\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/attach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"attach"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Detaches a Peripheral device from it's currently associated Gateway",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals/:id/detach",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals",
+										":id",
+										"detach"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) ID of the Peripheral device"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/detach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"detach"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"status\": -24946605,\n \"errors\": [\n  {\n   \"code\": \"nostrud nulla nisi ex\",\n   \"message\": \"ea in\"\n  },\n  {\n   \"code\": \"fugiat incididunt id\",\n   \"message\": \"esse in\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/detach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"detach"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/detach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"detach"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Updates a Peripheral device status (ON/OFF)",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals/:id/status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals",
+										":id",
+										"status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) ID of the Peripheral device"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"status"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"status\": -24946605,\n \"errors\": [\n  {\n   \"code\": \"nostrud nulla nisi ex\",\n   \"message\": \"ea in\"\n  },\n  {\n   \"code\": \"fugiat incididunt id\",\n   \"message\": \"esse in\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"status"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Peripherals/:id/status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Peripherals",
+												":id",
+												"status"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-98935436",
+													"description": "(Required) ID of the Peripheral device"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Add a new Peripheral device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uid\": 4319009,\n    \"vendor\": \"Musala Soft\",\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Peripherals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Peripherals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"payload\": {\n  \"id\": -96749071,\n  \"gatewayId\": -70312472,\n  \"creationDate\": \"1995-10-29T23:13:23.019Z\",\n  \"uid\": -42295629,\n  \"vendor\": \"ut et ex ipsum\",\n  \"status\": false\n },\n \"status\": 30253988,\n \"errors\": [\n  {\n   \"code\": \"est sunt\",\n   \"message\": \"exercitation esse\"\n  },\n  {\n   \"code\": \"deserunt Duis laborum ut\",\n   \"message\": \"non occaecat mollit\"\n  }\n ]\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\": -43190018,\n    \"vendor\": \"et qui cillum \",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "System",
+			"item": [
+				{
+					"name": "Check system",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/System",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"System"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:44321",
+			"type": "string"
+		}
+	]
+}
