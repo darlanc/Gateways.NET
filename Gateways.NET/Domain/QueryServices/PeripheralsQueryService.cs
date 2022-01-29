@@ -15,6 +15,18 @@ namespace Gateways.NET.Domain.QueryServices
 
         }
 
+        public async Task<bool> Exists(int id)
+        {
+            var source = await _repository.FindByIdAsync(id);
+            return source != null;
+        }
+
+        public async Task<Peripheral> FindById(int id)
+        {
+            var source = await _repository.FindByIdAsync(id);
+            return source;
+        }
+
         public async Task<IEnumerable<Peripheral>> GetAll(IPaginationModel pagination)
         {
             var source = _repository.Find(x => !x.IsDeleted);

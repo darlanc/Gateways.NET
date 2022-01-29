@@ -153,7 +153,7 @@ namespace Gateways.NET.Controllers
         /// <summary>
         /// Get the list of existing gateways and their associated peripheral devices.
         /// </summary>
-        /// <returns>List of Billers</returns>
+        /// <returns>List of Gateways</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ApiResponse<IEnumerable<FullGatewayViewModel>>> GetAll([FromQuery] Pagination pagination)
@@ -175,7 +175,7 @@ namespace Gateways.NET.Controllers
         /// <summary>
         /// Get the list of associated peripheral devices of a Gateway.
         /// </summary>
-        /// <returns>List of Billers</returns>
+        /// <returns>List of Peripherals</returns>
         [HttpGet("{id}/peripherals")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ApiResponse<IEnumerable<FullPeripheralViewModel>>> GetPeripherals(int id)
@@ -200,7 +200,7 @@ namespace Gateways.NET.Controllers
         /// <summary>
         /// Get a Gateway properties and the list of associated peripheral devices.
         /// </summary>
-        /// <returns>List of Billers</returns>
+        /// <returns>A Gateway model</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ApiResponse<FullGatewayViewModel>> GetGateway(int id)

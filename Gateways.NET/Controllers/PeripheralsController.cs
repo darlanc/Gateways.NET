@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Gateways.NET.Controllers
 {
@@ -20,12 +21,14 @@ namespace Gateways.NET.Controllers
         ILogger<PeripheralsController> _logger;
         private readonly IMapper _mapper;
         private readonly ICommandDispatcher _dispatcher;
+        private readonly IPeripheralsQueryService _queryService;
 
-        public PeripheralsController(IMapper mapper, ICommandDispatcher dispatcher, ILogger<PeripheralsController> logger)
+        public PeripheralsController(IMapper mapper, ICommandDispatcher dispatcher, ILogger<PeripheralsController> logger, IPeripheralsQueryService queryService)
         {
             _mapper = mapper;
             _dispatcher = dispatcher;
             _logger = logger;
+            _queryService = queryService;
         }
 
         /// <summary>
@@ -212,6 +215,52 @@ namespace Gateways.NET.Controllers
                 if (_logger != null)
                     _logger.LogError(ex, ex.Message);
                 return Error(Resources.Error_General, StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Get the list of existing peripherals
+        /// </summary>
+        /// <returns>List of Peripherals</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ApiResponse<IEnumerable<FullPeripheralViewModel>>> GetAll([FromQuery] Pagination pagination)
+        {
+            try
+            {
+                var source = await _queryService.GetAll(pagination);
+                var result = _mapper.Map<IEnumerable<FullPeripheralViewModel>>(source);
+                return Respond<IEnumerable<FullPeripheralViewModel>>(payload: result);
+            }
+            catch (Exception ex)
+            {
+                if (_logger != null)
+                    _logger.LogError(ex, ex.Message);
+                return Error<IEnumerable<FullPeripheralViewModel>>(Resources.Error_General, StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Get a Peripheral properties
+        /// </summary>
+        /// <returns>A Peripheral model</returns>
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ApiResponse<FullPeripheralViewModel>> GetPeripheral(int id)
+        {
+            try
+            {
+                var source = await _queryService.FindById(id);
+                if (source == null)
+                    return Error<FullPeripheralViewModel>(Resources.ValidationError_PeripheralNotFound, StatusCodes.Status404NotFound);
+                var result = _mapper.Map<FullPeripheralViewModel>(source);
+                return Respond<FullPeripheralViewModel>(payload: result);
+            }
+            catch (Exception ex)
+            {
+                if (_logger != null)
+                    _logger.LogError(ex, ex.Message);
+                return Error<FullPeripheralViewModel>(Resources.Error_General, StatusCodes.Status500InternalServerError);
             }
         }
     }
