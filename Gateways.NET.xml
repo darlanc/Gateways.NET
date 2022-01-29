@@ -293,19 +293,19 @@
             <summary>
             Get the list of existing gateways and their associated peripheral devices.
             </summary>
-            <returns>List of Billers</returns>
+            <returns>List of Gateways</returns>
         </member>
         <member name="M:Gateways.NET.Controllers.GatewaysController.GetPeripherals(System.Int32)">
             <summary>
             Get the list of associated peripheral devices of a Gateway.
             </summary>
-            <returns>List of Billers</returns>
+            <returns>List of Peripherals</returns>
         </member>
         <member name="M:Gateways.NET.Controllers.GatewaysController.GetGateway(System.Int32)">
             <summary>
             Get a Gateway properties and the list of associated peripheral devices.
             </summary>
-            <returns>List of Billers</returns>
+            <returns>A Gateway model</returns>
         </member>
         <member name="M:Gateways.NET.Controllers.PeripheralsController.AddPeripheral(Gateways.NET.CoreViewModels.PeripheralViewModel)">
             <summary>
@@ -349,6 +349,18 @@
             <param name="model">Peripheral device model</param>
             /// <param name="id">ID of the Peripheral device</param>
             <returns></returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.GetAll(Gateways.NET.Contracts.Pagination)">
+            <summary>
+            Get the list of existing peripherals
+            </summary>
+            <returns>List of Peripherals</returns>
+        </member>
+        <member name="M:Gateways.NET.Controllers.PeripheralsController.GetPeripheral(System.Int32)">
+            <summary>
+            Get a Peripheral properties
+            </summary>
+            <returns>A Peripheral model</returns>
         </member>
         <member name="M:Gateways.NET.Controllers.SystemController.CheckSystemStatus">
             <summary>
