@@ -1587,6 +1587,30 @@
 									"body": ""
 								}
 							]
+						},
+						{
+							"name": "Get a Peripheral properties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Peripherals/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Peripherals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1693,6 +1717,33 @@
 							"body": ""
 						}
 					]
+				},
+				{
+					"name": "Get the list of existing peripherals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Peripherals?Page=1&PageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Peripherals"
+							],
+							"query": [
+								{
+									"key": "Page",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
